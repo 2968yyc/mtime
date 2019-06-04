@@ -25,6 +25,12 @@
             <artifactId>api</artifactId>
             <version>1.0.0</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.stylefeng</groupId>
+            <artifactId>guns-core</artifactId>
+            <version>1.0.0</version>
+        </dependency>
         <!--dubbo-->
         <dependency>
             <groupId>com.alibaba.spring.boot</groupId>
