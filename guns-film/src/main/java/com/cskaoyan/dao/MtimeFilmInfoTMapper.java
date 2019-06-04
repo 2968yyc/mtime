@@ -1,6 +1,6 @@
-package com.cskaoyan.film.dao;
+package com.cskaoyan.dao;
 
-import com.cskaoyan.film.bean.MtimeFilmInfoT;
+import com.cskaoyan.bean.MtimeFilmInfoT;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 /**
