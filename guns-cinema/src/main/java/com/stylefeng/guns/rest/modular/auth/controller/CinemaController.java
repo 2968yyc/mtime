@@ -1,5 +1,7 @@
 package com.stylefeng.guns.rest.modular.auth.controller;
 
+import com.stylefeng.guns.rest.modular.auth.controller.dto.CinemaReq;
+import com.stylefeng.guns.rest.modular.auth.controller.dto.CinemaResp;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -9,8 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class CinemaController {
-    @RequestMapping("/cinema/getCinemas")
-    public void getCinema(){
 
+    @RequestMapping("/cinema/getCinemas")
+    public CinemaResp getCinema(CinemaReq cinemaReq){
+
+        return null;
     }
 }
