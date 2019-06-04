@@ -64,9 +64,9 @@ public class EntityGenerator {
         // 包配置
         PackageConfig pc = new PackageConfig();
         pc.setParent(null);
-        pc.setEntity("com.cskaoyan.film.bean");
-        pc.setMapper("com.cskaoyan.film.dao");
-        pc.setXml("com.cskaoyan.film.dao.mapping");
+        pc.setEntity("com.cskaoyan.bean");
+        pc.setMapper("com.cskaoyan.dao");
+        pc.setXml("com.cskaoyan.dao.mapping");
         pc.setService("TTT");       //本项目没用，生成之后删掉
         pc.setServiceImpl("TTT");   //本项目没用，生成之后删掉
         pc.setController("TTT");    //本项目没用，生成之后删掉
