@@ -1,4 +1,4 @@
-package com.cskaoyan.bean;
+package com.stylefeng.guns.rest.film.bean;
 
 import com.baomidou.mybatisplus.enums.IdType;
 import java.util.Date;

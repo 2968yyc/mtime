@@ -1,4 +1,4 @@
-package com.cskaoyan.service.impl;
+package com.stylefeng.guns.rest.film.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
 import com.cskaoyan.bean.StatusVo;
