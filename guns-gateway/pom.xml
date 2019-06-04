@@ -19,6 +19,12 @@
     </parent>
 
     <dependencies>
+        <!--api引入-->
+        <dependency>
+            <groupId>com.stylefeng</groupId>
+            <artifactId>api</artifactId>
+            <version>1.0.0</version>
+        </dependency>
         <!--dubbo-->
         <dependency>
             <groupId>com.alibaba.spring.boot</groupId>
