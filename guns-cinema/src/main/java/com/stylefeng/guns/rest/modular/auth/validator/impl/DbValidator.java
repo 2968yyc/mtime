@@ -15,9 +15,9 @@ import java.util.List;
  * @date 2017-08-23 12:34
  */
 //@Service
-//public class DbValidator implements IReqValidator {
+public class DbValidator implements IReqValidator {
 
-   /* @Autowired
+    @Autowired
     UserMapper userMapper;
 
     @Override
@@ -28,5 +28,5 @@ import java.util.List;
         } else {
             return false;
         }
-    }*/
+    }
 }
