@@ -1,7 +1,9 @@
 package com.stylefeng.guns.rest.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.cskaoyan.bean.StatusVo;
+import com.cskaoyan.bean.vo.StatusVo;
+import com.cskaoyan.bean.vo.Vo;
+
 import com.cskaoyan.service.FilmService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,8 +30,15 @@ public class FilmController {
      *    top100
      */
     @RequestMapping(value = "getIndex",method = RequestMethod.GET)
-    public StatusVo getIndex(){
-        return null;
+    public Vo getIndex(){
+        Vo index = new Vo();
+        try {
+           index = filmService.getIndex();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return index;
     }
 
     /**
@@ -38,13 +47,13 @@ public class FilmController {
      *   sourceInfo
      *   yearInfo
      */
-    @RequestMapping(value = "getConditionList",method = RequestMethod.GET)
-    public StatusVo getConditionList(String catId,String sourceId,String yearId){
-        return null;
-    }
-
-    /**
-     *   影片查询接口
-     */
+//    @RequestMapping(value = "getConditionList",method = RequestMethod.GET)
+//    public Vo getConditionList(String catId,String sourceId,String yearId){
+//        return null;
+//    }
+//
+//    /**
+//     *   影片查询接口
+//     */
 
 }

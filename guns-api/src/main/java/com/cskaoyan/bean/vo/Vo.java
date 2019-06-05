@@ -1,4 +1,4 @@
-package com.cskaoyan.bean;
+package com.cskaoyan.bean.vo;
 
 import java.io.Serializable;
 
@@ -10,6 +10,33 @@ public class Vo implements Serializable {
     private int status;
     private String msg;
     private Object data;
+    private String imgPre;
+    private String nowPage;
+    private String totalPage;
+
+    public String getNowPage() {
+        return nowPage;
+    }
+
+    public void setNowPage(String nowPage) {
+        this.nowPage = nowPage;
+    }
+
+    public String getTotalPage() {
+        return totalPage;
+    }
+
+    public void setTotalPage(String totalPage) {
+        this.totalPage = totalPage;
+    }
+
+    public String getImgPre() {
+        return imgPre;
+    }
+
+    public void setImgPre(String imgPre) {
+        this.imgPre = imgPre;
+    }
 
     protected int getStatus() {
         return status;
