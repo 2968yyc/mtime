@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Author: Qiu
  * @Date: 2019/6/4 20:23
  */
-@RestController
+//@RestController
 @RequestMapping("film")
 public class FilmController {
 
