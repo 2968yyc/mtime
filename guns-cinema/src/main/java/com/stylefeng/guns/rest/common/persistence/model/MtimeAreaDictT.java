@@ -15,23 +15,27 @@ import java.io.Serializable;
  * @author xf
  * @since 2019-06-04
  */
-@TableName("mtime_area_dict_t")
-public class MtimeAreaDictT extends Model<MtimeAreaDictT> {
+public class MtimeAreaDictT  implements Serializable{
 
-    private static final long serialVersionUID = 1L;
-
-    /**
-     * 主键编号
-     */
-    @TableId(value = "UUID", type = IdType.AUTO)
-    private Integer uuid;
-    /**
-     * 显示名称
-     */
-    @TableField("show_name")
-    private String showName;
-
+    private Integer areaId;
+    private String areaName;
     private boolean isActive;
+
+    public Integer getAreaId() {
+        return areaId;
+    }
+
+    public void setAreaId(Integer areaId) {
+        this.areaId = areaId;
+    }
+
+    public String getAreaName() {
+        return areaName;
+    }
+
+    public void setAreaName(String areaName) {
+        this.areaName = areaName;
+    }
 
     public boolean isActive() {
         return isActive;
@@ -39,35 +43,5 @@ public class MtimeAreaDictT extends Model<MtimeAreaDictT> {
 
     public void setActive(boolean active) {
         isActive = active;
-    }
-
-
-    public Integer getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(Integer uuid) {
-        this.uuid = uuid;
-    }
-
-    public String getShowName() {
-        return showName;
-    }
-
-    public void setShowName(String showName) {
-        this.showName = showName;
-    }
-
-    @Override
-    protected Serializable pkVal() {
-        return this.uuid;
-    }
-
-    @Override
-    public String toString() {
-        return "MtimeAreaDictT{" +
-        "uuid=" + uuid +
-        ", showName=" + showName +
-        "}";
     }
 }

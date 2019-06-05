@@ -6,6 +6,7 @@ import com.stylefeng.guns.rest.common.persistence.vo.CinemaReq;
 import com.stylefeng.guns.rest.common.persistence.vo.CinemaResp;
 import com.stylefeng.guns.rest.common.persistence.vo.CondReq;
 import com.stylefeng.service.CinemaService;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,7 +28,8 @@ public class CinemaController {
         return vo;
     }
     @RequestMapping("cinema/getCondition")
-    public Vo getCondition(CondReq condReq){
-        return cinemaService.selectConditionByOptions(condReq);
+    public Vo getCondition(CinemaReq cinemaReq){
+        Vo vo = cinemaService.selectConditionByOptions(cinemaReq);
+        return vo;
     }
 }
