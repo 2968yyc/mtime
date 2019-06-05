@@ -1,4 +1,4 @@
-package com.stylefeng.guns.rest.modular.auth.controller.dto;
+package com.stylefeng.guns.rest.common.persistence.vo;
 
 /**
  * @Author: xf

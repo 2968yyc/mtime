@@ -1,4 +1,4 @@
-package com.stylefeng.guns.rest.modular.auth.controller.dto;
+package com.stylefeng.guns.rest.common.persistence.vo;
 
 /**
  * @Author: xf
@@ -6,7 +6,7 @@ package com.stylefeng.guns.rest.modular.auth.controller.dto;
  */
 public class CinemaResp {
     private String  status="0";
-    private String noePage="1";
+    private String nowPage="1";
     private String totalPage="5";
     private Object data;
 
@@ -14,16 +14,22 @@ public class CinemaResp {
         return status;
     }
 
+    public CinemaResp(String nowPage, String totalPage, Object data) {
+        this.nowPage = nowPage;
+        this.totalPage = totalPage;
+        this.data = data;
+    }
+
     public void setStatus(String status) {
         this.status = status;
     }
 
-    public String getNoePage() {
-        return noePage;
+    public String getNowPage() {
+        return nowPage;
     }
 
-    public void setNoePage(String noePage) {
-        this.noePage = noePage;
+    public void setNowPage(String nowPage) {
+        this.nowPage = nowPage;
     }
 
     public String getTotalPage() {
