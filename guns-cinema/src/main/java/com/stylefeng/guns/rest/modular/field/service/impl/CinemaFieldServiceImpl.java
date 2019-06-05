@@ -4,6 +4,7 @@ import com.alibaba.dubbo.config.annotation.Service;
 import com.cskaoyan.bean.cinema.CinemaInfoVo;
 import com.cskaoyan.bean.cinema.FilmInfoVo;
 import com.cskaoyan.service.CinemaFieldService;
+import com.stylefeng.guns.rest.common.persistence.dao.MtimeCinemaTMapper;
 import com.stylefeng.guns.rest.common.persistence.dao.MtimeFieldTMapper;
 import com.stylefeng.guns.rest.common.persistence.model.MtimeCinemaT;
 import com.stylefeng.guns.rest.modular.field.service.IMtimeCinemaTService;
@@ -21,14 +22,14 @@ import java.util.List;
 public class CinemaFieldServiceImpl implements CinemaFieldService {
 
     @Autowired
-    IMtimeCinemaTService mtimeCinemaTService;
+    MtimeCinemaTMapper mtimeCinemaTMapper;
 
     @Autowired
     MtimeFieldTMapper mtimeFieldTMapper;
 
     @Override
-    public CinemaInfoVo getCinemaInfo(Integer cinemaId){
-        MtimeCinemaT mtimeCinemaT = mtimeCinemaTService.selectById(cinemaId);
+    public CinemaInfoVo getCinemaInfo(int cinemaId){
+        MtimeCinemaT mtimeCinemaT = mtimeCinemaTMapper.selectById(cinemaId);
         CinemaInfoVo cinemaInfoVo = new CinemaInfoVo();
         cinemaInfoVo.setCinemaId(mtimeCinemaT.getUuid() + "");
         cinemaInfoVo.setImgUrl(mtimeCinemaT.getImgAddress());
@@ -39,7 +40,7 @@ public class CinemaFieldServiceImpl implements CinemaFieldService {
     }
 
     @Override
-    public List<FilmInfoVo> getFilmInfoVo(Integer cinemaId){
+    public List<FilmInfoVo> getFilmInfoVo(int cinemaId){
         List<FilmInfoVo> filmInfoVos = mtimeFieldTMapper.selectFilmInfoByCinemaId(cinemaId);
         return filmInfoVos;
     }

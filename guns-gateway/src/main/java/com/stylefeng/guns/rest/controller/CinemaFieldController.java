@@ -22,15 +22,16 @@ public class CinemaFieldController {
     CinemaFieldService cinemaFieldService;
 
     @RequestMapping("getFields")
-    public Vo getFields(Integer cinemaId){
+    public Vo getFields(int cinemaId){
         try {
             CinemaInfoVo cinemaInfo = cinemaFieldService.getCinemaInfo(cinemaId);
-            if (cinemaId != null){
+            if (cinemaInfo != null){
                 return new DataVo(0,cinemaInfo);
             }else {
                 return new StatusVo(1,"影院信息查询失败");
             }
         }catch (Exception e){
+            e.printStackTrace();
             return new StatusVo(999,"系统出现异常，请联系管理员");
         }
     }

@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface CinemaFieldService {
 
-    CinemaInfoVo getCinemaInfo(Integer cinemaId);
+    CinemaInfoVo getCinemaInfo(int cinemaId);
 
-    List<FilmInfoVo> getFilmInfoVo(Integer cinemaId);
+    List<FilmInfoVo> getFilmInfoVo(int cinemaId);
 }

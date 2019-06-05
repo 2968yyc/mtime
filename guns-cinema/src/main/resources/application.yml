@@ -29,12 +29,12 @@ mybatis-plus:
 spring:
   application:
     name: movie-gateway
-    dubbo:
-      server: true
-      registry: zookeeper://localhost:2181
-      protocol:
-       name: dubbo
-       port: 20885
+  dubbo:
+    server: true
+    registry: zookeeper://localhost:2181
+    protocol:
+      name: dubbo
+      port: 20885
   datasource:
       url: jdbc:mysql://127.0.0.1:3306/guns_rest?serverTimezone=GMT&autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL
       username: root
