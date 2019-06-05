@@ -1,12 +1,12 @@
 package com.stylefeng.guns.rest.common.persistence.service.impl;
 
-import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.stylefeng.guns.rest.common.persistence.dao.MtimeCinemaTMapper;
 import com.stylefeng.guns.rest.common.persistence.model.MtimeCinemaT;
-import com.stylefeng.guns.rest.common.persistence.service.CinemaService;
+import com.stylefeng.service.CinemaService;
 import com.stylefeng.guns.rest.common.persistence.vo.CinemaReq;
 import com.stylefeng.guns.rest.common.persistence.vo.CinemaResp;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -15,11 +15,12 @@ import java.util.List;
  * @Author: xf
  * @Date: 2019/6/4 23:01
  */
-@org.springframework.stereotype.Service("cinemaServiceImpl")
-@Service(interfaceClass = CinemaService.class)
+
+@Service(interfaceClass = CinemaService.class,version = "1.0")
+@Component
 public class CinemaServiceImpl implements CinemaService {
 
-    @Reference
+    @Autowired
     MtimeCinemaTMapper mtimeCinemaTMapper;
 
 

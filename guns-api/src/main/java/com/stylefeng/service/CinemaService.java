@@ -1,4 +1,4 @@
-package com.stylefeng.guns.rest.common.persistence.service;
+package com.stylefeng.service;
 
 import com.stylefeng.guns.rest.common.persistence.vo.CinemaReq;
 import com.stylefeng.guns.rest.common.persistence.vo.CinemaResp;
