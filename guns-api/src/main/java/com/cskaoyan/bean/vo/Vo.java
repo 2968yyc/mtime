@@ -14,27 +14,27 @@ public class Vo implements Serializable {
     private String nowPage;
     private String totalPage;
 
-    public String getNowPage() {
+    protected String getNowPage() {
         return nowPage;
     }
 
-    public void setNowPage(String nowPage) {
+    protected void setNowPage(String nowPage) {
         this.nowPage = nowPage;
     }
 
-    public String getTotalPage() {
+    protected String getTotalPage() {
         return totalPage;
     }
 
-    public void setTotalPage(String totalPage) {
+    protected void setTotalPage(String totalPage) {
         this.totalPage = totalPage;
     }
 
-    public String getImgPre() {
+    protected String getImgPre() {
         return imgPre;
     }
 
-    public void setImgPre(String imgPre) {
+    protected void setImgPre(String imgPre) {
         this.imgPre = imgPre;
     }
 

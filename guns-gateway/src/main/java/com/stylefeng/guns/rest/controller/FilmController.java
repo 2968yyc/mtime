@@ -47,13 +47,16 @@ public class FilmController {
      *   sourceInfo
      *   yearInfo
      */
-//    @RequestMapping(value = "getConditionList",method = RequestMethod.GET)
-//    public Vo getConditionList(String catId,String sourceId,String yearId){
-//        return null;
-//    }
-//
-//    /**
-//     *   影片查询接口
-//     */
+    @RequestMapping(value = "getConditionList",method = RequestMethod.GET)
+    public Vo getConditionList(String catId,String sourceId,String yearId){
+
+
+
+        return filmService.getConditionList(catId,sourceId,yearId);
+    }
+
+    /**
+     *   影片查询接口
+     */
 
 }

@@ -9,4 +9,6 @@ import com.cskaoyan.bean.vo.Vo;
  */
 public interface FilmService {
     Vo getIndex();
+
+    Vo getConditionList(String catId, String sourceId, String yearId);
 }
