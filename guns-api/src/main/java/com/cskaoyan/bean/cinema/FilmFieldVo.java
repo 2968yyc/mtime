@@ -4,7 +4,7 @@ package com.cskaoyan.bean.cinema;
  * @Author:ZCH
  * @Date:2019/6/4 23:24
  */
-public class filmFieldVo {
+public class FilmFieldVo {
     private String fieldId;
     private String beginTime;
     private String endTime;
@@ -12,10 +12,10 @@ public class filmFieldVo {
     private String hallName;
     private String price;
 
-    public filmFieldVo() {
+    public FilmFieldVo() {
     }
 
-    public filmFieldVo(String fieldId, String beginTime, String endTime, String language, String hallName, String price) {
+    public FilmFieldVo(String fieldId, String beginTime, String endTime, String language, String hallName, String price) {
         this.fieldId = fieldId;
         this.beginTime = beginTime;
         this.endTime = endTime;
@@ -74,7 +74,7 @@ public class filmFieldVo {
 
     @Override
     public String toString() {
-        return "filmFieldVo{" +
+        return "FilmFieldVo{" +
                 "fieldId='" + fieldId + '\'' +
                 ", beginTime='" + beginTime + '\'' +
                 ", endTime='" + endTime + '\'' +

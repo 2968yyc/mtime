@@ -14,4 +14,33 @@
         <result column="price" property="price" />
     </resultMap>
 
+    <resultMap id="FilmInfoMap" type="com.cskaoyan.bean.cinema.FilmInfoVo">
+        <id column="UUID" property="fieldId" />
+        <result column="film_id" property="filmId"/>
+        <result column="film_name" property="filmName"/>
+        <result column="film_length" property="filmLength"/>
+        <result column="film_cats" property="filmCats"/>
+        <result column="film_language" property="filmType"/>
+        <result column="actors" property="actors"/>
+        <result column="img_address" property="imgAddress"/>
+        <collection property="filmFields" ofType="com.cskaoyan.bean.cinema.FilmFieldVo">
+            <result column="UUID" property="fieldId"/>
+            <result column="begin_time" property="beginTime"/>
+            <result column="end_time" property="endTime"/>
+            <result column="film_language" property="language"/>
+            <result column="hall_name" property="hallName"/>
+            <result column="price" property="price"/>
+        </collection>
+    </resultMap>
+
+    <select id="selectFilmInfoByCinemaId" resultMap="">
+        select
+        h.film_id,h.film_name,h.film_length,h.film_language,h.film_cats,actors,h.img_address,
+        f.UUID,f.begin_time,f.end_time,f.hall_name,f.price
+        from mtime_hall_film_info_t h LEFT JOIN mtime_field_t f
+        on f.film_id = h.film_id
+        where
+        f.cinema_id = #{cinemaId}
+    </select>
+
 </mapper>
