@@ -10,4 +10,8 @@
         <result column="is_valid" property="isValid" />
     </resultMap>
 
+    <select id="queryAllBanner" resultType="com.stylefeng.guns.rest.film.bean.rebuild.Banner">
+        select UUID as bannerIdm,banner_address as bannerAdderss,banner_url as  bannerUrl from mtime_banner_t
+    </select>
+
 </mapper>
