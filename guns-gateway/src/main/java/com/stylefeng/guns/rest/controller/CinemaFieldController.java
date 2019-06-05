@@ -1,10 +1,10 @@
 package com.stylefeng.guns.rest.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.cskaoyan.bean.DataVo;
-import com.cskaoyan.bean.StatusVo;
-import com.cskaoyan.bean.Vo;
 import com.cskaoyan.bean.cinema.CinemaInfoVo;
+import com.cskaoyan.bean.vo.DataVo;
+import com.cskaoyan.bean.vo.StatusVo;
+import com.cskaoyan.bean.vo.Vo;
 import com.cskaoyan.service.CinemaFieldService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
