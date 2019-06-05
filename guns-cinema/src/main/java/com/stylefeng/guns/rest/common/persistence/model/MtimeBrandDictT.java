@@ -31,6 +31,15 @@ public class MtimeBrandDictT extends Model<MtimeBrandDictT> {
     @TableField("show_name")
     private String showName;
 
+    private boolean isActive;
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
+    }
 
     public Integer getUuid() {
         return uuid;

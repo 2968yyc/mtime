@@ -1,21 +1,23 @@
 package com.stylefeng.guns.rest.common.persistence.vo;
 
+import java.io.Serializable;
+
 /**
  * @Author: xf
  * @Date: 2019/6/4 22:45
  */
-public class CinemaReq {
-    private String brandId="99";
+public class CinemaReq implements Serializable {
+    private int brandId = 99;
     private String hallType="99";
     private String districtId="99";
     private String pageSize="12";
     private String nowPage="1";
 
-    public String getBrandId() {
+    public int getBrandId() {
         return brandId;
     }
 
-    public void setBrandId(String brandId) {
+    public void setBrandId(int brandId) {
         this.brandId = brandId;
     }
 

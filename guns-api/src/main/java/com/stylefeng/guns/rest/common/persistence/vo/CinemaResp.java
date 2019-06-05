@@ -1,50 +1,49 @@
 package com.stylefeng.guns.rest.common.persistence.vo;
 
+import com.cskaoyan.bean.Vo;
+
 /**
  * @Author: xf
  * @Date: 2019/6/4 22:51
  */
-public class CinemaResp {
-    private String  status="0";
-    private String nowPage="1";
-    private String totalPage="5";
-    private Object data;
+public class CinemaResp extends Vo {
+    private int nowPage=1;
+    private int totalPage=5;
 
-    public String getStatus() {
-        return status;
+    public CinemaResp() {
     }
 
-    public CinemaResp(String nowPage, String totalPage, Object data) {
+    public CinemaResp(int nowPage, int totalPage, Object data) {
         this.nowPage = nowPage;
         this.totalPage = totalPage;
-        this.data = data;
+        this.setData(data);
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    @Override
+    public int getStatus() {
+        return super.getStatus();
     }
 
-    public String getNowPage() {
+
+    public int getNowPage() {
         return nowPage;
     }
 
-    public void setNowPage(String nowPage) {
+    public void setNowPage(int nowPage) {
         this.nowPage = nowPage;
     }
 
-    public String getTotalPage() {
+    public int getTotalPage() {
         return totalPage;
     }
 
-    public void setTotalPage(String totalPage) {
+    public void setTotalPage(int totalPage) {
         this.totalPage = totalPage;
     }
 
+    @Override
     public Object getData() {
-        return data;
+        return super.getData();
     }
 
-    public void setData(Object data) {
-        this.data = data;
-    }
 }
