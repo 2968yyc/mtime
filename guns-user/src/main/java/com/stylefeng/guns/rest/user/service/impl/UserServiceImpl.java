@@ -1,7 +1,7 @@
 package com.stylefeng.guns.rest.user.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
-import com.cskaoyan.bean.StatusVo;
+import com.cskaoyan.bean.vo.StatusVo;
 import com.cskaoyan.bean.user.UserRegisterVo;
 import com.cskaoyan.service.UserService;
 import com.stylefeng.guns.rest.user.dao.MtimeUserTMapper;
