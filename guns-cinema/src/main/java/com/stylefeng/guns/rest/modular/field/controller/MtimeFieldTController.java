@@ -1,9 +1,6 @@
 package com.stylefeng.guns.rest.modular.field.controller;
 
 
-import com.alibaba.dubbo.config.annotation.Reference;
-import com.cskaoyan.service.CinemaFieldService;
-import com.stylefeng.guns.rest.common.persistence.model.MtimeFieldT;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,16 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2019-06-04
  */
 @RestController
-@RequestMapping("/cinema")
+@RequestMapping("/MtimeFieldT")
 public class MtimeFieldTController {
-
-    @Reference
-    CinemaFieldService cinemaFieldService;
-
-    @RequestMapping("getFields")
-    public MtimeFieldT getFields(Integer cinemaId){
-        return null;
-    }
 
 }
 
