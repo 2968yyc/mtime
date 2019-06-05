@@ -1,10 +1,12 @@
 package com.cskaoyan.bean.user;
 
+import java.io.Serializable;
+
 /**
  * @Author: yyc
  * @Date: 2019/6/4 17:11
  */
-public class UserRegisterVo {
+public class UserRegisterVo implements Serializable {
     private String username;
     private String password;
     private String email;

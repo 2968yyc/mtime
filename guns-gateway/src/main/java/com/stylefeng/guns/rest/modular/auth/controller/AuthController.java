@@ -1,5 +1,8 @@
 package com.stylefeng.guns.rest.modular.auth.controller;
 
+import com.cskaoyan.bean.DataVo;
+import com.cskaoyan.bean.StatusVo;
+import com.cskaoyan.bean.Vo;
 import com.stylefeng.guns.core.exception.GunsException;
 import com.stylefeng.guns.rest.common.exception.BizExceptionEnum;
 import com.stylefeng.guns.rest.modular.auth.controller.dto.AuthRequest;
@@ -25,20 +28,27 @@ public class AuthController {
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
 
-    @Resource(name = "simpleValidator")
+    @Resource(name = "userValidator")
     private IReqValidator reqValidator;
 
     @RequestMapping(value = "${jwt.auth-path}")
-    public ResponseEntity<?> createAuthenticationToken(AuthRequest authRequest) {
+    public Vo createAuthenticationToken(AuthRequest authRequest) {
 
-        boolean validate = reqValidator.validate(authRequest);
+        boolean validate = false;
+        try {
+            validate = reqValidator.validate(authRequest);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new StatusVo(999,"系统出现异常，请联系管理员");
+        }
 
         if (validate) {
             final String randomKey = jwtTokenUtil.getRandomKey();
-            final String token = jwtTokenUtil.generateToken(authRequest.getUserName(), randomKey);
-            return ResponseEntity.ok(new AuthResponse(token, randomKey));
+            final String token = jwtTokenUtil.generateToken(authRequest.getUsername(), randomKey);
+
+            return new DataVo(0, new AuthResponse(token, randomKey));
         } else {
-            throw new GunsException(BizExceptionEnum.AUTH_REQUEST_ERROR);
+            return new StatusVo(1,"用户名或者密码错误");
         }
     }
 }

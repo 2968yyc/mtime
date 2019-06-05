@@ -4,23 +4,22 @@ package com.cskaoyan.bean;
  * @Author: yyc
  * @Date: 2019/6/4 17:04
  */
-public class StatusVo {
-    private int status;
-    private String msg;
+public class StatusVo extends Vo{
 
-    public int getStatus() {
-        return status;
+    public StatusVo() {
+    }
+    public StatusVo(int status,String msg) {
+        this.setStatus(status);
+        this.setMsg(msg);
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    @Override
+    public  int getStatus() {
+        return super.getStatus();
     }
 
-    public String getMsg() {
-        return msg;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
+    @Override
+    public  String getMsg() {
+        return super.getMsg();
     }
 }

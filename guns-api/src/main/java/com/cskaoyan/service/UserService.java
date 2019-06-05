@@ -9,4 +9,8 @@ import com.cskaoyan.bean.user.UserRegisterVo;
  */
 public interface UserService {
     StatusVo register(UserRegisterVo userRegisterVo);
+
+    StatusVo check(String username);
+
+    String getPwdByUsername(String credenceName);
 }
