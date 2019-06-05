@@ -11,7 +11,7 @@ public class FilmQueryVo extends Vo {
     public FilmQueryVo() {
     }
 
-    public FilmQueryVo(int status, String imgPre, String nowPage, String totalPage, Object data) {
+    public FilmQueryVo(int status, String imgPre, Integer nowPage, int totalPage, Object data) {
         this.setStatus(status);
         this.setImgPre(imgPre);
         this.setData(data);

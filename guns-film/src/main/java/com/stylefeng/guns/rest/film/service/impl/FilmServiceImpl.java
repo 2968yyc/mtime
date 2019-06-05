@@ -1,11 +1,16 @@
 package com.stylefeng.guns.rest.film.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.plugins.Page;
+import com.cskaoyan.bean.film.FilmGetVo;
 import com.cskaoyan.bean.vo.DataVo;
 import com.cskaoyan.bean.vo.StatusVo;
 import com.cskaoyan.bean.vo.Vo;
 import com.cskaoyan.bean.vo.film.FilmIndexVo;
+import com.cskaoyan.bean.vo.film.FilmQueryVo;
 import com.cskaoyan.service.FilmService;
+import com.stylefeng.guns.rest.film.bean.MtimeFilmT;
 import com.stylefeng.guns.rest.film.bean.rebuild.*;
 
 import com.stylefeng.guns.rest.film.dao.*;
@@ -109,6 +114,57 @@ public class FilmServiceImpl implements FilmService {
         return dataVo;
 
     }
+
+    @Override
+    public Vo getFilms(FilmGetVo filmGetVo) {
+
+        List<FilmInfo> filmInfos = new ArrayList<>();
+
+        EntityWrapper<MtimeFilmT> entityWrapper = new EntityWrapper<>();
+        entityWrapper.eq("film_status","1");
+
+
+        Page<MtimeFilmT> page =new Page<>(filmGetVo.getNowPage(),filmGetVo.getPageSize());
+        if (filmGetVo.getSourceId()!=99){
+           entityWrapper.eq("film_source",filmGetVo.getSourceId());
+        }
+        if (filmGetVo.getYearId()!=99){
+            entityWrapper.eq("film_date",filmGetVo.getYearId());
+        }
+        if (filmGetVo.getCatId()!=99){
+            String catStr = "%#"+filmGetVo.getCatId()+"#%";
+            entityWrapper.like("film_cats",catStr);
+        }
+        List<MtimeFilmT> mtimeFilms = mtimeFilmTMapper.selectPage(page,entityWrapper);
+
+        filmInfos = getFilmInfos(mtimeFilms,filmInfos);
+        Integer totalCount = mtimeFilmTMapper.selectCount(entityWrapper);
+        int totalPages = (totalCount/filmGetVo.getPageSize())+1;
+
+        return new FilmQueryVo(0,"http://img.meetingshop.cn/",filmGetVo.getNowPage(),totalPages,filmInfos);
+
+    }
+
+    /**
+     * 重新封装filmInfo
+     * @param mtimeFilms
+     * @param filmInfos
+     * @return
+     */
+    private List<FilmInfo> getFilmInfos(List<MtimeFilmT> mtimeFilms, List<FilmInfo> filmInfos) {
+        for (MtimeFilmT f : mtimeFilms) {
+            FilmInfo filmInfo = new FilmInfo(f.getUuid(),f.getFilmType(),f.getImgAddress(),f.getFilmName(),f.getFilmScore());
+            filmInfos.add(filmInfo);
+        }
+        return filmInfos;
+    }
+
+    /**
+     * filmCat
+     * @param filmGetVo
+     * @return
+     */
+
 
     /**
      * sourceInfo

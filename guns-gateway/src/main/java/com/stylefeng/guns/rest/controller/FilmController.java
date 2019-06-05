@@ -1,6 +1,7 @@
 package com.stylefeng.guns.rest.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.cskaoyan.bean.film.FilmGetVo;
 import com.cskaoyan.bean.vo.StatusVo;
 import com.cskaoyan.bean.vo.Vo;
 
@@ -58,5 +59,10 @@ public class FilmController {
     /**
      *   影片查询接口
      */
+
+    @RequestMapping(value = "getFilms",method = RequestMethod.GET)
+    public Vo getFilms(FilmGetVo filmGetVo){
+        return filmService.getFilms(filmGetVo);
+    }
 
 }
