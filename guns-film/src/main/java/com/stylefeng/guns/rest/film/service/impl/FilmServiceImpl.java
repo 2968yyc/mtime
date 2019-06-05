@@ -122,6 +122,13 @@ public class FilmServiceImpl implements FilmService {
 
         EntityWrapper<MtimeFilmT> entityWrapper = new EntityWrapper<>();
         entityWrapper.eq("film_status","1");
+        if(filmGetVo.getSortId()==1){
+            entityWrapper.orderBy("film_box_office");
+        }else if (filmGetVo.getSortId()==2){
+            entityWrapper.orderBy("film_date");
+        }else if (filmGetVo.getSortId() == 3){
+            entityWrapper.orderBy("film_score");
+        }
 
 
         Page<MtimeFilmT> page =new Page<>(filmGetVo.getNowPage(),filmGetVo.getPageSize());
