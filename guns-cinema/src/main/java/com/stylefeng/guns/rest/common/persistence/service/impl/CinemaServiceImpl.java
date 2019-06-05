@@ -48,7 +48,7 @@ public class CinemaServiceImpl implements CinemaService {
 
     @Override
     public Vo selectCinemaByOptions(CinemaReq cinemaReq) {
-        String brandId="%"+String.valueOf(cinemaReq.getBrandId())+"%";
+        String brandId="%"+cinemaReq.getBrandId()+"%";
         String districtId="%"+cinemaReq.getDistrictId()+"%";
         String hallType="%"+cinemaReq.getHallType()+"%";
 
@@ -72,16 +72,18 @@ public class CinemaServiceImpl implements CinemaService {
         System.out.println(666);
     }
 
-    public Vo selectConditionByOptions(CondReq condReq){
-
+    public Vo selectConditionByOptions(CinemaReq cinemaReq){
+        String brandId="%"+cinemaReq.getBrandId()+"%";
+        String areaId="%"+cinemaReq.getAreaId()+"%";
+        String hallType="%"+cinemaReq.getHallType()+"%";
 
         List<MtimeBrandDictT> list1=null;
         List<MtimeAreaDictT> list2=null;
         List<MtimeHallDictT> list3=null;
         try{
-            list1=mtimeBrandDictTMapper.selectBatchIds(condReq.getBrandId());
-            list2=mtimeAreaDictTMapper.selectBatchIds(condReq.getAreaId());
-            list3=mtimeHallDictTMapper.selectBatchIds(condReq.getHallType());
+            list1=mtimeBrandDictTMapper.selectBeanById(brandId);
+            list2=mtimeAreaDictTMapper.selectBeanById(areaId);
+            list3=mtimeHallDictTMapper.selectBeanById(hallType);
         }catch (Exception e){
             e.printStackTrace();
             return new StatusVo(1,"影院信息查询失败");

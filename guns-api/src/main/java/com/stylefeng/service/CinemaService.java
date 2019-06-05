@@ -12,7 +12,7 @@ import com.stylefeng.guns.rest.common.persistence.vo.CondReq;
 public interface CinemaService {
     Vo selectCinemaByOptions(CinemaReq cinemaReq);
     void test();
-    Vo selectConditionByOptions(CondReq condReq);
+    Vo selectConditionByOptions(CinemaReq cinemaReq);
 
 
 }
