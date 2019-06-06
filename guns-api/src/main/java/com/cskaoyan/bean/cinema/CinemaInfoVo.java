@@ -1,11 +1,13 @@
 package com.cskaoyan.bean.cinema;
 
 
+import java.io.Serializable;
+
 /**
  * @Author:ZCH
  * @Date:2019/6/4 23:16
  */
-public class CinemaInfoVo {
+public class CinemaInfoVo implements Serializable {
     private String cinemaId;
     private String imgUrl;
     private String cinemaName;

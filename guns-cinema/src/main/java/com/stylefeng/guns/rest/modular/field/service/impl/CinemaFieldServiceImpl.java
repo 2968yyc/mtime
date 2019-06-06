@@ -3,11 +3,11 @@ package com.stylefeng.guns.rest.modular.field.service.impl;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.cskaoyan.bean.cinema.CinemaInfoVo;
 import com.cskaoyan.bean.cinema.FilmInfoVo;
+import com.cskaoyan.bean.cinema.HallInfo;
 import com.cskaoyan.service.CinemaFieldService;
 import com.stylefeng.guns.rest.common.persistence.dao.MtimeCinemaTMapper;
 import com.stylefeng.guns.rest.common.persistence.dao.MtimeFieldTMapper;
 import com.stylefeng.guns.rest.common.persistence.model.MtimeCinemaT;
-import com.stylefeng.guns.rest.modular.field.service.IMtimeCinemaTService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -43,6 +43,19 @@ public class CinemaFieldServiceImpl implements CinemaFieldService {
     public List<FilmInfoVo> getFilmInfoVo(int cinemaId){
         List<FilmInfoVo> filmInfoVos = mtimeFieldTMapper.selectFilmInfoByCinemaId(cinemaId);
         return filmInfoVos;
+    }
+
+    @Override
+    public HallInfo getHallInfo(int fieldId){
+        HallInfo hallInfo = mtimeFieldTMapper.selectHallInfoByFieldId(fieldId);
+        hallInfo.setSoldSeats("1,2,3,5,12");
+        return hallInfo;
+    }
+
+    @Override
+    public FilmInfoVo getFilmInfoByCinemaIdAndFieldId(int cinemaId, int fieldId){
+        FilmInfoVo filmInfoVo = mtimeFieldTMapper.selectFilmInfoByCinemaIdAndFieldId(cinemaId, fieldId);
+        return filmInfoVo;
     }
 
 }

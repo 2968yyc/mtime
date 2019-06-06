@@ -15,7 +15,6 @@
     </resultMap>
 
     <resultMap id="FilmInfoMap" type="com.cskaoyan.bean.cinema.FilmInfoVo">
-        <id column="UUID" property="fieldId" />
         <result column="film_id" property="filmId"/>
         <result column="film_name" property="filmName"/>
         <result column="film_length" property="filmLength"/>
@@ -33,7 +32,7 @@
         </collection>
     </resultMap>
 
-    <select id="selectFilmInfoByCinemaId" resultMap="">
+    <select id="selectFilmInfoByCinemaId" resultMap="FilmInfoMap">
         select
         h.film_id,h.film_name,h.film_length,h.film_language,h.film_cats,actors,h.img_address,
         f.UUID,f.begin_time,f.end_time,f.hall_name,f.price
@@ -43,4 +42,23 @@
         f.cinema_id = #{cinemaId}
     </select>
 
+
+    <resultMap id="HallInfoMap" type="com.cskaoyan.bean.cinema.HallInfo">
+        <id column="UUID" property="hallFieldId" />
+        <result column="hall_name" property="hallName" />
+        <result column="price" property="price" />
+        <result column="seat_address" property="seatFile"/>
+    </resultMap>
+
+    <select id="selectHallInfoByFieldId" resultMap="HallInfoMap">
+        select f.UUID,f.hall_name,f.price,hd.seat_address from mtime_field_t f
+        LEFT JOIN mtime_hall_dict_t hd on f.hall_id = hd.UUID
+        where f.UUID = #{fieldId}
+    </select>
+
+    <select id="selectFilmInfoByCinemaIdAndFieldId" resultMap="FilmInfoMap">
+        select hf.film_id,hf.film_name,hf.film_language,hf.img_address,hf.film_cats,hf.film_length
+        from mtime_hall_film_info_t hf LEFT JOIN mtime_field_t f on hf.film_id = f.film_id
+        where f.cinema_id = #{cinemaId} and f.hall_id = #{fieldId}
+    </select>
 </mapper>

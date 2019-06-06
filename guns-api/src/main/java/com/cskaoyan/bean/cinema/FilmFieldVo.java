@@ -1,10 +1,12 @@
 package com.cskaoyan.bean.cinema;
 
+import java.io.Serializable;
+
 /**
  * @Author:ZCH
  * @Date:2019/6/4 23:24
  */
-public class FilmFieldVo {
+public class FilmFieldVo implements Serializable {
     private String fieldId;
     private String beginTime;
     private String endTime;
