@@ -52,6 +52,11 @@
             <artifactId>zkclient</artifactId>
             <version>0.10</version>
         </dependency>
+        <dependency>
+            <groupId>com.stylefeng</groupId>
+            <artifactId>api</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
     <build>
