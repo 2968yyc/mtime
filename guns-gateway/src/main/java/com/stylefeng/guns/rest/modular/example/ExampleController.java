@@ -1,5 +1,6 @@
 package com.stylefeng.guns.rest.modular.example;
 
+import com.cskaoyan.AliveUser;
 import com.stylefeng.guns.rest.common.SimpleObject;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;

@@ -1,5 +1,6 @@
 package com.stylefeng.guns.rest.modular.auth.filter;
 
+import com.cskaoyan.AliveUser;
 import com.stylefeng.guns.core.base.tips.ErrorTip;
 import com.stylefeng.guns.core.util.RenderUtil;
 import com.stylefeng.guns.rest.common.exception.BizExceptionEnum;
@@ -43,6 +44,11 @@ public class AuthFilter extends OncePerRequestFilter {
         String authToken = null;
         if (requestHeader != null && requestHeader.startsWith("Bearer ")) {
             authToken = requestHeader.substring(7);
+            //把用户username存入threadlocal
+            String username = jwtTokenUtil.getUsernameFromToken(authToken);
+            if(username!=null){
+                AliveUser.setThread(username);
+            }
 
             //验证token是否过期,包含了验证jwt是否正确
             try {

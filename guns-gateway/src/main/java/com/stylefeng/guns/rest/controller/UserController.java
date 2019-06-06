@@ -1,10 +1,13 @@
 package com.stylefeng.guns.rest.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.cskaoyan.bean.AllVo;
 import com.cskaoyan.bean.StatusVo;
 import com.cskaoyan.bean.user.UserRegisterVo;
+import com.cskaoyan.bean.user.UserUpdate;
 import com.cskaoyan.service.UserService;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,10 +38,18 @@ public class UserController {
         return userService.check(username);
     }
 
+    @GetMapping("logout")
+    public StatusVo logout(){
+        return new StatusVo(0,"成功退出");
+    }
 
+    @GetMapping("getUserInfo")
+    public AllVo getUserInfo(){
+        return userService.getUserInfo();
+    }
 
-
-
-
-
+    @PostMapping("updateUserInfo")
+    public AllVo updateUserInfo(UserUpdate userUpdate){
+        return userService.updateUserInfo(userUpdate);
+    }
 }
