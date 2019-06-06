@@ -5,6 +5,7 @@ import com.cskaoyan.bean.cinema.CinemaInfoVo;
 import com.cskaoyan.bean.cinema.FilmInfoVo;
 import com.cskaoyan.bean.cinema.HallInfo;
 import com.cskaoyan.bean.vo.DataVo;
+import com.cskaoyan.bean.vo.ImgPreVo;
 import com.cskaoyan.bean.vo.StatusVo;
 import com.cskaoyan.bean.vo.Vo;
 import com.cskaoyan.service.CinemaFieldService;
@@ -34,9 +35,8 @@ public class CinemaFieldController {
             map.put("cinemaInfo",cinemaInfo);
             map.put("filmList",filmList);
             if (cinemaInfo != null && filmList != null){
-                DataVo dataVo = new DataVo(0, map);
-                dataVo.setImgPre("http://img.meetingshop.cn/");
-                return dataVo;
+                ImgPreVo imgPreVo = new ImgPreVo(0, map, "http://img.meetingshop.cn/");
+                return imgPreVo;
             }else {
                 return new StatusVo(1,"影院信息查询失败");
             }
@@ -56,9 +56,8 @@ public class CinemaFieldController {
             map.put("filmInfo",filmInfo);
             map.put("cinemaInfo",cinemaInfo);
             map.put("hallInfo",hallInfo);
-            DataVo dataVo = new DataVo(0, map);
-            dataVo.setImgPre("http://img.meetingshop.cn/");
-            return dataVo;
+            ImgPreVo imgPreVo = new ImgPreVo(0, map, "http://img.meetingshop.cn/");
+            return imgPreVo;
         }catch (Exception e){
             e.printStackTrace();
             return new StatusVo(999,"系统出现异常，请联系管理员");
