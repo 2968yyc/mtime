@@ -14,4 +14,5 @@ public interface FilmService {
     Vo getConditionList(String catId, String sourceId, String yearId);
 
     Vo getFilms(FilmGetVo filmGetVo);
+    Vo getFilmDetails(String id,int searchType);
 }

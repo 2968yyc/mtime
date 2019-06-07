@@ -1,9 +1,9 @@
 package com.stylefeng.guns.rest.common.persistence.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
-import com.cskaoyan.bean.DataVo;
-import com.cskaoyan.bean.StatusVo;
-import com.cskaoyan.bean.Vo;
+import com.cskaoyan.bean.vo.DataVo;
+import com.cskaoyan.bean.vo.StatusVo;
+import com.cskaoyan.bean.vo.Vo;
 import com.stylefeng.guns.rest.common.persistence.dao.MtimeAreaDictTMapper;
 import com.stylefeng.guns.rest.common.persistence.dao.MtimeBrandDictTMapper;
 import com.stylefeng.guns.rest.common.persistence.dao.MtimeCinemaTMapper;
@@ -12,7 +12,6 @@ import com.stylefeng.guns.rest.common.persistence.model.MtimeAreaDictT;
 import com.stylefeng.guns.rest.common.persistence.model.MtimeBrandDictT;
 import com.stylefeng.guns.rest.common.persistence.model.MtimeCinemaT;
 import com.stylefeng.guns.rest.common.persistence.model.MtimeHallDictT;
-import com.stylefeng.guns.rest.common.persistence.vo.CondReq;
 import com.stylefeng.service.CinemaService;
 import com.stylefeng.guns.rest.common.persistence.vo.CinemaReq;
 import com.stylefeng.guns.rest.common.persistence.vo.CinemaResp;
@@ -60,10 +59,9 @@ public class CinemaServiceImpl implements CinemaService {
             return new StatusVo(1,"影院信息查询失败");
         }
         String  total=String.valueOf(lists.size());
-        List<List<MtimeCinemaT>> list=new ArrayList<>();
-        list.add(lists);
+        Object o=lists;
 
-        CinemaResp cinemaResp = new CinemaResp(Integer.parseInt(cinemaReq.getNowPage()), Integer.parseInt(total), list);
+        CinemaResp cinemaResp = new CinemaResp(0,Integer.parseInt(cinemaReq.getNowPage()), Integer.parseInt(total), o);
         return cinemaResp;
     }
 

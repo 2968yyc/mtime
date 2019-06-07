@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.rest.film.dao.AllFilmInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.stylefeng.guns.rest.film.bean.rebuild.AllFilmInfo">
+        <result column="c1" property="filmName" />
+        <result column="c2" property="imgAddress" />
+        <result column="c3" property="totalBox" />
+        <result column="c4" property="filmSourceId" />
+        <result column="c5" property="filmAreaID" />
+        <result column="c6" javaType="java.sql.Date" jdbcType="DATE" property="filmTime" />
+        <result column="c8" property="cats"/>
+        <result column="c9" property="filmSource" />
+        <result column="c10" property="filmArea" />
+
+        <result column="c11" property="filmId" />
+        <result column="c12" property="filmEnName" />
+        <result column="c13" property="score" />
+        <result column="c14" property="scoreNum" />
+        <result column="c15" property="filmLength" />
+        <result column="c16" property="biography" />
+        <result column="c17" property="imgVo" />
+        <result column="c18" property="directorId" />
+
+
+
+    </resultMap>
+
+    <sql id="BaseSql">
+        t1.`film_name` c1,t1.`img_address` c2,t1.`film_box_office` c3,t1.`film_source` c4,t1.`film_area` c5,t1.`film_time` c6,t1.`film_cats` c8,
+        t2.`show_name` c9,t4.`show_name` c10,
+        t3.`film_id` c11,t3.`film_en_name` c12,t3.`film_score` c13,t3.`film_score_num` c14,t3.`film_length` c15,t3.`biography` c16,t3.`film_imgs` c17,t3.`director_id` c18
+    </sql>
+
+
+    <select id="getFilmDetails" resultMap="BaseResultMap">
+      select
+      <include refid="BaseSql" />
+        from mtime_film_t t1
+        left join mtime_source_dict_t t2 on t2.`UUID` = t1.`film_source`
+        left join mtime_source_dict_t t4 on t4.`UUID` = t1.`film_area`
+        left join mtime_film_info_t t3 on t3.`film_id` = t1.`UUID`
+      where 1=1
+      <if test="filmName !=null">
+          and t1.`film_name` = #{filmName}
+      </if>
+        <if test=" filmId != 0">
+            and t3.`film_id` = #{filmId}
+        </if>
+
+    </select>
+    <select id="getDirectorById" resultType="com.stylefeng.guns.rest.film.bean.MtimeActorT">
+        select * from mtime_actor_t where UUID = #{id}
+    </select>
+
+    <resultMap id="actorsMap" type="com.stylefeng.guns.rest.film.bean.rebuild.Actor">
+        <result column="c4" property="uuid" />
+        <result column="c1" property="actorName" />
+        <result column="c2" property="actorImg" />
+        <result column="c3" property="roleName" />
+    </resultMap>
+    <select id="getActorsById" resultMap="actorsMap">
+        select t1.`actor_name` c1,t1.`actor_img` c2,t2.`role_name` c3,t1.`UUID` c4
+        from mtime_film_actor_t t2
+        left join  mtime_actor_t t1  on t1.`UUID` = t2.`actor_id`
+        where t2.`film_id` = #{id}
+    </select>
+</mapper>

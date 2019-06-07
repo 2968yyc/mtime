@@ -1,9 +1,7 @@
 package com.stylefeng.service;
 
-import com.cskaoyan.bean.Vo;
+import com.cskaoyan.bean.vo.Vo;
 import com.stylefeng.guns.rest.common.persistence.vo.CinemaReq;
-import com.stylefeng.guns.rest.common.persistence.vo.CinemaResp;
-import com.stylefeng.guns.rest.common.persistence.vo.CondReq;
 
 /**
  * @Author: xf
