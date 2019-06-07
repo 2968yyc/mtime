@@ -1,10 +1,10 @@
-package com.cskaoyan.bean;
+package com.cskaoyan.bean.vo;
 
 /**
  * @Author: yyc
  * @Date: 2019/6/4 20:27
  */
-public class DataVo extends Vo{
+public class DataVo extends Vo {
     public DataVo() {
     }
     public DataVo(int status,Object data) {

@@ -1,7 +1,7 @@
 package com.cskaoyan.service;
 
 import com.cskaoyan.bean.AllVo;
-import com.cskaoyan.bean.StatusVo;
+import com.cskaoyan.bean.vo.StatusVo;
 import com.cskaoyan.bean.user.UserRegisterVo;
 import com.cskaoyan.bean.user.UserUpdate;
 

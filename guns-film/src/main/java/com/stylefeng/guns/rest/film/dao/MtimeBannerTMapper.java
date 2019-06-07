@@ -1,7 +1,10 @@
 package com.stylefeng.guns.rest.film.dao;
 
+import com.stylefeng.guns.rest.film.bean.rebuild.Banner;
 import com.stylefeng.guns.rest.film.bean.MtimeBannerT;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +16,6 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
  */
 public interface MtimeBannerTMapper extends BaseMapper<MtimeBannerT> {
 
+
+    List<Banner> queryAllBanner();
 }

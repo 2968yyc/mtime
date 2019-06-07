@@ -2,7 +2,7 @@ package com.stylefeng.guns.rest.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.cskaoyan.bean.AllVo;
-import com.cskaoyan.bean.StatusVo;
+import com.cskaoyan.bean.vo.StatusVo;
 import com.cskaoyan.bean.user.UserRegisterVo;
 import com.cskaoyan.bean.user.UserUpdate;
 import com.cskaoyan.service.UserService;

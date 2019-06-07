@@ -92,7 +92,7 @@ public class MtimeFilmT extends Model<MtimeFilmT> {
         return uuid;
     }
 
-    public void setUuid(Integer uuid) {
+    protected void setUuid(Integer uuid) {
         this.uuid = uuid;
     }
 
@@ -100,7 +100,7 @@ public class MtimeFilmT extends Model<MtimeFilmT> {
         return filmName;
     }
 
-    public void setFilmName(String filmName) {
+    protected void setFilmName(String filmName) {
         this.filmName = filmName;
     }
 
@@ -108,7 +108,7 @@ public class MtimeFilmT extends Model<MtimeFilmT> {
         return filmType;
     }
 
-    public void setFilmType(Integer filmType) {
+    protected void setFilmType(Integer filmType) {
         this.filmType = filmType;
     }
 
@@ -116,7 +116,7 @@ public class MtimeFilmT extends Model<MtimeFilmT> {
         return imgAddress;
     }
 
-    public void setImgAddress(String imgAddress) {
+    protected void setImgAddress(String imgAddress) {
         this.imgAddress = imgAddress;
     }
 
@@ -124,71 +124,71 @@ public class MtimeFilmT extends Model<MtimeFilmT> {
         return filmScore;
     }
 
-    public void setFilmScore(String filmScore) {
+    protected void setFilmScore(String filmScore) {
         this.filmScore = filmScore;
     }
 
-    public Integer getFilmPresalenum() {
+    protected Integer getFilmPresalenum() {
         return filmPresalenum;
     }
 
-    public void setFilmPresalenum(Integer filmPresalenum) {
+    protected void setFilmPresalenum(Integer filmPresalenum) {
         this.filmPresalenum = filmPresalenum;
     }
 
-    public Integer getFilmBoxOffice() {
+    protected Integer getFilmBoxOffice() {
         return filmBoxOffice;
     }
 
-    public void setFilmBoxOffice(Integer filmBoxOffice) {
+    protected void setFilmBoxOffice(Integer filmBoxOffice) {
         this.filmBoxOffice = filmBoxOffice;
     }
 
-    public Integer getFilmSource() {
+    protected Integer getFilmSource() {
         return filmSource;
     }
 
-    public void setFilmSource(Integer filmSource) {
+    protected void setFilmSource(Integer filmSource) {
         this.filmSource = filmSource;
     }
 
-    public String getFilmCats() {
+    protected String getFilmCats() {
         return filmCats;
     }
 
-    public void setFilmCats(String filmCats) {
+    protected void setFilmCats(String filmCats) {
         this.filmCats = filmCats;
     }
 
-    public Integer getFilmArea() {
+    protected Integer getFilmArea() {
         return filmArea;
     }
 
-    public void setFilmArea(Integer filmArea) {
+    protected void setFilmArea(Integer filmArea) {
         this.filmArea = filmArea;
     }
 
-    public Integer getFilmDate() {
+    protected Integer getFilmDate() {
         return filmDate;
     }
 
-    public void setFilmDate(Integer filmDate) {
+    protected void setFilmDate(Integer filmDate) {
         this.filmDate = filmDate;
     }
 
-    public Date getFilmTime() {
+    protected Date getFilmTime() {
         return filmTime;
     }
 
-    public void setFilmTime(Date filmTime) {
+    protected void setFilmTime(Date filmTime) {
         this.filmTime = filmTime;
     }
 
-    public Integer getFilmStatus() {
+    protected Integer getFilmStatus() {
         return filmStatus;
     }
 
-    public void setFilmStatus(Integer filmStatus) {
+    protected void setFilmStatus(Integer filmStatus) {
         this.filmStatus = filmStatus;
     }
 
