@@ -13,7 +13,7 @@ public class AuthRequest implements Credence {
     private String userName;
     private String password;
 
-    public void setUsername(String userName) {
+    public void setUserName(String userName) {
         this.userName = userName;
     }
 
@@ -25,7 +25,7 @@ public class AuthRequest implements Credence {
         this.password = password;
     }
 
-    public String getUsername() {
+    public String getUserName() {
         return userName;
     }
 
