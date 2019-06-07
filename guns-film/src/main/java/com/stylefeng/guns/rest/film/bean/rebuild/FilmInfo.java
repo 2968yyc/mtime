@@ -2,22 +2,28 @@ package com.stylefeng.guns.rest.film.bean.rebuild;
 
 import com.stylefeng.guns.rest.film.bean.MtimeFilmT;
 
+import java.io.Serializable;
+
 /**
  * @Author: Qiu
  * @Date: 2019/6/5 22:34
  */
-public class FilmInfo extends MtimeFilmT {
-     private int filmId;
+public class FilmInfo implements Serializable {
+    private int filmId;
+    private int filmType;
+    private String imgAddress;
+    private String filmName;
+    private String filmScore;
 
-    public FilmInfo() {
+    public FilmInfo(int filmId, int filmType, String imgAddress, String filmName, String filmScore) {
+        this.filmId = filmId;
+        this.filmType = filmType;
+        this.imgAddress = imgAddress;
+        this.filmName = filmName;
+        this.filmScore = filmScore;
     }
 
-    public FilmInfo(int filmId,int filmType,String imgAddress,String filmName,String filmScore) {
-        this.setFilmId(filmId);
-        this.setFilmType(filmType);
-        this.setImgAddress(imgAddress);
-        this.setFilmName(filmName);
-        this.setFilmScore(filmScore);
+    public FilmInfo() {
     }
 
     public int getFilmId() {
@@ -27,18 +33,36 @@ public class FilmInfo extends MtimeFilmT {
     public void setFilmId(int filmId) {
         this.filmId = filmId;
     }
-    @Override
-    public Integer getFilmType(){
-        return super.getFilmType();
-    }
-    @Override
-    public String getFilmName(){
-        return super.getFilmName();
-    }
-    @Override
-    public String getFilmScore(){
-        return super.getFilmScore();
+
+    public int getFilmType() {
+        return filmType;
     }
 
+    public void setFilmType(int filmType) {
+        this.filmType = filmType;
+    }
 
+    public String getImgAddress() {
+        return imgAddress;
+    }
+
+    public void setImgAddress(String imgAddress) {
+        this.imgAddress = imgAddress;
+    }
+
+    public String getFilmName() {
+        return filmName;
+    }
+
+    public void setFilmName(String filmName) {
+        this.filmName = filmName;
+    }
+
+    public String getFilmScore() {
+        return filmScore;
+    }
+
+    public void setFilmScore(String filmScore) {
+        this.filmScore = filmScore;
+    }
 }

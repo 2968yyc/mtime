@@ -15,8 +15,8 @@ public class FilmQueryVo extends Vo {
         this.setStatus(status);
         this.setImgPre(imgPre);
         this.setData(data);
-        this.setNowPage(nowPage);
-        this.setTotalPage(totalPage);
+        this.setNowPage(nowPage + "");
+        this.setTotalPage(totalPage + "");
     }
 
     @Override
@@ -35,12 +35,13 @@ public class FilmQueryVo extends Vo {
     }
 
     @Override
-    protected int getNowPage() {
+    public Integer getNowPage() {
         return super.getNowPage();
     }
 
     @Override
-    protected int getTotalPage() {
+    public Integer getTotalPage() {
         return super.getTotalPage();
     }
+
 }

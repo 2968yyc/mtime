@@ -11,22 +11,22 @@ public class Vo implements Serializable {
     private String msg;
     private Object data;
     private String imgPre;
-    private int  nowPage;
-    private int  totalPage;
+    private Integer nowPage;
+    private Integer totalPage;
 
-    protected int getNowPage() {
+    protected Integer getNowPage() {
         return nowPage;
     }
 
-    protected void setNowPage(int nowPage) {
+    protected void setNowPage(Integer nowPage) {
         this.nowPage = nowPage;
     }
 
-    protected int getTotalPage() {
+    protected Integer getTotalPage() {
         return totalPage;
     }
 
-    protected void setTotalPage(int totalPage) {
+    protected void setTotalPage(Integer totalPage) {
         this.totalPage = totalPage;
     }
 
