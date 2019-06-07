@@ -44,7 +44,6 @@ public class AuthFilter extends OncePerRequestFilter {
         String authToken = null;
         if (requestHeader != null && requestHeader.startsWith("Bearer ")) {
             authToken = requestHeader.substring(7);
-            //把用户username存入threadlocal
             String username = jwtTokenUtil.getUsernameFromToken(authToken);
             if(username!=null){
                 AliveUser.setThread(username);
