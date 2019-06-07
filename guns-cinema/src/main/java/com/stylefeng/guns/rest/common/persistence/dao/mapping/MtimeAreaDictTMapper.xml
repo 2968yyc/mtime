@@ -4,8 +4,15 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.stylefeng.guns.rest.common.persistence.model.MtimeAreaDictT">
-        <id column="UUID" property="uuid" />
-        <result column="show_name" property="showName" />
+        <id column="UUID" property="areaId" />
+        <result column="show_name" property="areaName" />
     </resultMap>
-
+    <select id="selectBeanById" resultMap="BaseResultMap">
+        select *
+        from mtime_area_dict_t
+        where 1=1
+        <if test="areaId!=null and areaId != '%99%'">
+            and cast(UUID as char) like #{areaId}
+        </if>
+    </select>
 </mapper>

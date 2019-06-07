@@ -43,5 +43,4 @@ public class FilmQueryVo extends Vo {
     public String getTotalPage() {
         return super.getTotalPage();
     }
-
 }

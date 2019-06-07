@@ -10,5 +10,12 @@
     <select id="queryAllCat" resultType="com.stylefeng.guns.rest.film.bean.rebuild.Cat">
         select UUID as catId,show_name as catName from mtime_cat_dict_t
     </select>
-
+    <select id="queryNameById" resultType="String">
+        select show_name
+        from mtime_cat_dict_t
+        where UUID in 
+        <foreach collection="ids" item="item" separator="," open="(" close=")">
+            #{item}
+        </foreach>
+    </select>
 </mapper>
