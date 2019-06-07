@@ -1,10 +1,12 @@
 package com.cskaoyan.bean;
 
+import com.cskaoyan.bean.vo.Vo;
+
 /**
  * @Author : zjf
  * @Date : 2019/6/5 下午 05:58
  */
-public class AllVo extends Vo{
+public class AllVo extends Vo {
     @Override
     protected int getStatus() {
         return super.getStatus();
