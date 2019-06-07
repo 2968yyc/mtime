@@ -7,6 +7,7 @@ import com.cskaoyan.bean.vo.StatusVo;
 import com.cskaoyan.bean.user.UserRegisterVo;
 import com.cskaoyan.bean.user.UserUpdate;
 import com.cskaoyan.service.UserService;
+import com.stylefeng.guns.core.util.MD5Util;
 import com.stylefeng.guns.rest.user.dao.MtimeUserTMapper;
 import com.stylefeng.guns.rest.user.model.MtimeUserT;
 import com.stylefeng.guns.rest.user.service.IMtimeUserTService;
@@ -32,7 +33,7 @@ public class UserServiceImpl implements UserService {
     private MtimeUserT userRegisterVo2MtimeUserT(UserRegisterVo userRegisterVo){
         MtimeUserT mtimeUserT = new MtimeUserT();
         mtimeUserT.setUserName(userRegisterVo.getUsername());
-        mtimeUserT.setUserPwd(userRegisterVo.getPassword());
+        mtimeUserT.setUserPwd(MD5Util.encrypt(userRegisterVo.getPassword()));
         mtimeUserT.setEmail(userRegisterVo.getEmail());
         mtimeUserT.setUserPhone(userRegisterVo.getPhone());
         mtimeUserT.setAddress(userRegisterVo.getAddress());
