@@ -20,14 +20,14 @@
     </resultMap>
 
     <select id="queryHotFilmCount" resultType="Integer">
-        select * from mtime_film_t where film_score >= 8.5 and film_status = #{status}
+        select count(*) from mtime_film_t where film_score >= 8.5 and film_status = #{status}
     </select>
     <select id="queryHotFilm" resultType="com.stylefeng.guns.rest.film.bean.rebuild.HotFilm">
         select UUID as filmId,film_type as filmType,img_address as imgAddress,film_name as filmName,film_score as filmScore from mtime_film_t
         where film_score >= 8.5 and film_status = #{status} order by film_score desc
     </select>
     <select id="querySoonFilmCount" resultType="Integer">
-        select * from mtime_film_t where film_status = #{status}
+        select count(*) from mtime_film_t where film_status = #{status}
     </select>
     <select id="querySoonFilm" resultType="com.stylefeng.guns.rest.film.bean.rebuild.SoonFilm">
         select UUID as filmId,film_type as filmType,img_address as imgAddress,film_name as filmName,film_preSaleNum as expectNum,film_time as showTime from mtime_film_t
