@@ -35,12 +35,12 @@ public class FilmQueryVo extends Vo {
     }
 
     @Override
-    public Integer getNowPage() {
+    public String getNowPage() {
         return super.getNowPage();
     }
 
     @Override
-    public Integer getTotalPage() {
+    public String getTotalPage() {
         return super.getTotalPage();
     }
 
