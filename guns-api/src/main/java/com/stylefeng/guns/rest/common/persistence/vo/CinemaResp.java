@@ -13,8 +13,8 @@ public class CinemaResp extends Vo {
     public CinemaResp(int status, Integer nowPage, int totalPage, Object data) {
         this.setStatus(status);
         this.setData(data);
-        this.setNowPage(nowPage);
-        this.setTotalPage(totalPage);
+        this.setNowPage(nowPage+"");
+        this.setTotalPage(totalPage+"");
     }
 
     @Override
@@ -24,12 +24,13 @@ public class CinemaResp extends Vo {
 
 
     @Override
-    protected int getNowPage() {
+    protected String getNowPage() {
         return super.getNowPage();
     }
 
+
     @Override
-    protected int getTotalPage() {
+    protected String getTotalPage() {
         return super.getTotalPage();
     }
 
