@@ -36,6 +36,15 @@ public class MtimeActorT extends Model<MtimeActorT> {
     @TableField("actor_img")
     private String actorImg;
 
+    private String roleName;
+
+    public String getRoleName() {
+        return roleName;
+    }
+
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
+    }
 
     public Integer getUuid() {
         return uuid;

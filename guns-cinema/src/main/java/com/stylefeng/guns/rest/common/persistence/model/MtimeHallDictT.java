@@ -15,43 +15,11 @@ import java.io.Serializable;
  * @author xf
  * @since 2019-06-04
  */
-@TableName("mtime_hall_dict_t")
-public class MtimeHallDictT extends Model<MtimeHallDictT> {
-
-    private static final long serialVersionUID = 1L;
-
-    /**
-     * 主键编号
-     */
-    @TableId(value = "UUID", type = IdType.AUTO)
-    private Integer uuid;
-    /**
-     * 显示名称
-     */
-    @TableField("show_name")
-    private String showName;
-    /**
-     * 座位文件存放地址
-     */
-    @TableField("seat_address")
+public class MtimeHallDictT  implements Serializable{
+    private Integer halltypeId;
+    private String  halltypeName;
+    private boolean isActive;
     private String seatAddress;
-
-
-    public Integer getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(Integer uuid) {
-        this.uuid = uuid;
-    }
-
-    public String getShowName() {
-        return showName;
-    }
-
-    public void setShowName(String showName) {
-        this.showName = showName;
-    }
 
     public String getSeatAddress() {
         return seatAddress;
@@ -61,17 +29,27 @@ public class MtimeHallDictT extends Model<MtimeHallDictT> {
         this.seatAddress = seatAddress;
     }
 
-    @Override
-    protected Serializable pkVal() {
-        return this.uuid;
+    public Integer getHalltypeId() {
+        return halltypeId;
     }
 
-    @Override
-    public String toString() {
-        return "MtimeHallDictT{" +
-        "uuid=" + uuid +
-        ", showName=" + showName +
-        ", seatAddress=" + seatAddress +
-        "}";
+    public void setHalltypeId(Integer halltypeId) {
+        this.halltypeId = halltypeId;
+    }
+
+    public String getHalltypeName() {
+        return halltypeName;
+    }
+
+    public void setHalltypeName(String halltypeName) {
+        this.halltypeName = halltypeName;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
     }
 }

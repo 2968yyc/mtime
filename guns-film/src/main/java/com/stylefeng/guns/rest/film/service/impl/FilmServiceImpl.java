@@ -10,6 +10,7 @@ import com.cskaoyan.bean.vo.Vo;
 import com.cskaoyan.bean.vo.film.FilmIndexVo;
 import com.cskaoyan.bean.vo.film.FilmQueryVo;
 import com.cskaoyan.service.FilmService;
+import com.stylefeng.guns.rest.film.bean.MtimeActorT;
 import com.stylefeng.guns.rest.film.bean.MtimeFilmT;
 import com.stylefeng.guns.rest.film.bean.rebuild.*;
 
@@ -41,6 +42,9 @@ public class FilmServiceImpl implements FilmService {
     MtimeCatDictTMapper mtimeCatDictTMapper;
     @Autowired
     MtimeSourceDictTMapper mtimeSourceDictTMapper;
+    @Autowired
+    AllFilmInfoMapper allFilmInfoMapper;
+
 
     /**
      * 首页
@@ -166,6 +170,105 @@ public class FilmServiceImpl implements FilmService {
 
         return new FilmQueryVo(0,"http://img.meetingshop.cn/",filmGetVo.getNowPage(),totalPages,filmInfos);
 
+    }
+
+    @Override
+    public Vo getFilmDetails(String id, int searchType) {
+        int filmId=0;
+        String name=null;
+        if(id==null){
+            return new StatusVo(999,"系统出现异常，请联系管理员");
+        }
+        if(searchType==0){
+            filmId=Integer.parseInt(id);
+        }else {
+           name="%"+id+"%";
+        }
+        AllFilmInfo allFilmInfo=null;
+        try {
+            allFilmInfo = allFilmInfoMapper.getFilmDetails(name, filmId);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new StatusVo(1,"查询失败，无影片可加载");
+        }
+
+        FilmDetails filmDetails=null;
+        try {
+             filmDetails = getDetails(allFilmInfo);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new StatusVo(999,"系统出现异常，请联系管理员");
+        }
+
+        FilmIndexVo filmIndexVo = new FilmIndexVo("http://img.meetingshop.cn/", 0, filmDetails);
+        return filmIndexVo;
+    }
+
+    /**
+     *重新封装filmDetails
+     * @return
+     */
+    private FilmDetails getDetails(AllFilmInfo allFilmInfo){
+        FilmDetails filmDetails=new FilmDetails();
+        filmDetails.setFilmId(allFilmInfo.getFilmId());
+        filmDetails.setFilmName(allFilmInfo.getFilmName());
+        filmDetails.setFilmEnName(allFilmInfo.getFilmEnName());
+        filmDetails.setImgAddress(allFilmInfo.getImgAddress());
+        filmDetails.setScore(allFilmInfo.getScore());
+        filmDetails.setScoreNum(String.valueOf(allFilmInfo.getScoreNum())+" 万人评分");
+        filmDetails.setTotalBox((String.valueOf(allFilmInfo.getTotalBox()*1.0/10000))+" 亿");
+
+        String[] cats=allFilmInfo.getCats().split("#");
+        List<Integer> ids =new ArrayList<>();
+        for (int i = 1; i < cats.length; i++) {
+            ids.add(Integer.parseInt(cats[i]));
+        }
+        String info=mtimeCatDictTMapper.queryNameById(ids).toString();
+        String info01=info.substring(1,info.length()-1);
+
+        filmDetails.setInfo01(info01);
+        String info02=allFilmInfo.getFilmSource()+ " / " +allFilmInfo.getFilmLength()+" 分钟";
+        String info03=allFilmInfo.getFilmTime().toString()+allFilmInfo.getFilmArea()+"上映";
+        filmDetails.setInfo02(info02);
+        filmDetails.setInfo03(info03);
+        //info04下的actors
+        Map<String ,Object> info04=new HashMap<>();
+        info04.put("biography",allFilmInfo.getBiography());
+        //actors下的director
+        Map<String ,Object> director=new HashMap<>();
+        Actor dire_actor=null;
+
+        //所有的actor
+        List<Actor> allActors=  allFilmInfoMapper.getActorsById(Integer.valueOf(allFilmInfo.getFilmId()));
+        for(Actor m:allActors){
+            if(m.getUuid()==allFilmInfo.getDirectorId()){
+                dire_actor=m;
+            }
+            //allActors.remove(m);
+        }
+        allActors.remove(dire_actor);
+        director.put("directorName",dire_actor.getActorName());
+        director.put("imgAddress",dire_actor.getActorImg());
+
+        Map<String ,Object> actors=new HashMap<>();
+        actors.put("director ",director);
+        actors.put("actors",allActors);
+
+        info04.put("actors",actors);
+        filmDetails.setInfo04(info04);
+
+        //imgVo
+        Map<String ,String> imgVo=new HashMap<>();
+        String[] imgs=allFilmInfo.getImgVo().split(",");
+        for (int i = 0; i < imgs.length; i++) {
+            if(i==0){
+                imgVo.put("mainImg",imgs[i]);
+            }else {
+                imgVo.put("img0"+i,imgs[i]);
+            }
+        }
+        filmDetails.setImgVo(imgVo);
+        return filmDetails;
     }
 
     /**
