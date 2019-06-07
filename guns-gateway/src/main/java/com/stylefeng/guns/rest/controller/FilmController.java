@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("film")
 public class FilmController {
 
-    @Reference
+    @Reference(check = false)
     FilmService filmService;
 
     /**

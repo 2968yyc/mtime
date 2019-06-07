@@ -41,7 +41,7 @@ public class AuthController {
 
         if (validate) {
             final String randomKey = jwtTokenUtil.getRandomKey();
-            final String token = jwtTokenUtil.generateToken(authRequest.getUsername(), randomKey);
+            final String token = jwtTokenUtil.generateToken(authRequest.getUserName(), randomKey);
 
             return new DataVo(0, new AuthResponse(token, randomKey));
         } else {
