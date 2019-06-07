@@ -70,21 +70,37 @@ public class CinemaServiceImpl implements CinemaService {
         System.out.println(666);
     }
 
+    @Override
     public Vo selectConditionByOptions(CinemaReq cinemaReq){
-        String brandId="%"+cinemaReq.getBrandId()+"%";
-        String areaId="%"+cinemaReq.getAreaId()+"%";
-        String hallType="%"+cinemaReq.getHallType()+"%";
+        String brandId=cinemaReq.getBrandId();
+        String areaId=cinemaReq.getAreaId();
+        String hallType=cinemaReq.getHallType();
 
         List<MtimeBrandDictT> list1=null;
         List<MtimeAreaDictT> list2=null;
         List<MtimeHallDictT> list3=null;
         try{
-            list1=mtimeBrandDictTMapper.selectBeanById(brandId);
-            list2=mtimeAreaDictTMapper.selectBeanById(areaId);
-            list3=mtimeHallDictTMapper.selectBeanById(hallType);
+            list1=mtimeBrandDictTMapper.selectBeanById("%99%");
+            list2=mtimeAreaDictTMapper.selectBeanById("%99%");
+            list3=mtimeHallDictTMapper.selectBeanById("%99%");
         }catch (Exception e){
             e.printStackTrace();
             return new StatusVo(1,"影院信息查询失败");
+        }
+        for(MtimeBrandDictT m:list1){
+            if(m.getBrandId().equals(brandId)){
+                m.setActive(true);
+            }
+        }
+        for(MtimeAreaDictT m:list2){
+            if(m.getAreaId().equals(areaId)){
+                m.setActive(true);
+            }
+        }
+        for(MtimeHallDictT m:list3){
+            if(m.getHalltypeId().equals(hallType)){
+                m.setActive(true);
+            }
         }
         Map<String ,List>  map=new HashMap<>();
         map.put("brandList",list1);
