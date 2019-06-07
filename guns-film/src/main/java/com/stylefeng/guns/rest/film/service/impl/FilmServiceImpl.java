@@ -46,6 +46,10 @@ public class FilmServiceImpl implements FilmService {
     AllFilmInfoMapper allFilmInfoMapper;
 
 
+    /**
+     * 首页
+     * @return
+     */
     @Override
     public Vo getIndex() {
 
@@ -80,6 +84,13 @@ public class FilmServiceImpl implements FilmService {
 
     }
 
+    /**
+     * 查询接口
+     * @param catId
+     * @param sourceId
+     * @param yearId
+     * @return
+     */
     @Override
     public Vo getConditionList(String catId, String sourceId, String yearId) {
 
@@ -119,6 +130,11 @@ public class FilmServiceImpl implements FilmService {
 
     }
 
+    /**
+     * 查询
+     * @param filmGetVo
+     * @return
+     */
     @Override
     public Vo getFilms(FilmGetVo filmGetVo) {
 
@@ -270,13 +286,6 @@ public class FilmServiceImpl implements FilmService {
     }
 
     /**
-     * filmCat
-     * @param filmGetVo
-     * @return
-     */
-
-
-    /**
      * sourceInfo
      * @param sourceId
      * @param map
@@ -402,8 +411,14 @@ public class FilmServiceImpl implements FilmService {
         int filmNum = mtimeFilmTMapper.querySoonFilmCount(2);
         List<SoonFilm> filmInfo = mtimeFilmTMapper.querySoonFilm(2);
         HashMap<Object, Object> soonFilms = new HashMap<>();
-        soonFilms.put("filmNum",filmNum);
-        soonFilms.put("filmInfo",filmInfo);
+        if (filmInfo.size()==0&&filmNum==0){
+            soonFilms.put("filmNum",0);
+            soonFilms.put("filmInfo",null);
+        }else {
+            soonFilms.put("filmNum",filmNum);
+            soonFilms.put("filmInfo",filmInfo);
+        }
+
         map.put("soonFilms",soonFilms);
         return map;
     }
