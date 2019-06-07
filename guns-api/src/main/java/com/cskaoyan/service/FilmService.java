@@ -1,6 +1,7 @@
 package com.cskaoyan.service;
 
 
+import com.cskaoyan.bean.film.FilmConditionVo;
 import com.cskaoyan.bean.film.FilmGetVo;
 import com.cskaoyan.bean.vo.Vo;
 
@@ -11,8 +12,8 @@ import com.cskaoyan.bean.vo.Vo;
 public interface FilmService {
     Vo getIndex();
 
-    Vo getConditionList(String catId, String sourceId, String yearId);
-
     Vo getFilms(FilmGetVo filmGetVo);
     Vo getFilmDetails(String id,int searchType);
+
+    Vo getConditionList(FilmConditionVo filmConditionVo);
 }
