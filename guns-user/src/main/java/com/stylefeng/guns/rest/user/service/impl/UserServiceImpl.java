@@ -1,8 +1,11 @@
 package com.stylefeng.guns.rest.user.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
+import com.cskaoyan.AliveUser;
+import com.cskaoyan.bean.AllVo;
 import com.cskaoyan.bean.vo.StatusVo;
 import com.cskaoyan.bean.user.UserRegisterVo;
+import com.cskaoyan.bean.user.UserUpdate;
 import com.cskaoyan.service.UserService;
 import com.stylefeng.guns.rest.user.dao.MtimeUserTMapper;
 import com.stylefeng.guns.rest.user.model.MtimeUserT;
@@ -35,6 +38,7 @@ public class UserServiceImpl implements UserService {
         mtimeUserT.setAddress(userRegisterVo.getAddress());
         return mtimeUserT;
     }
+
     @Override
     public StatusVo register(UserRegisterVo userRegisterVo) {
         MtimeUserT mtimeUserT = userRegisterVo2MtimeUserT(userRegisterVo);
@@ -80,5 +84,53 @@ public class UserServiceImpl implements UserService {
     public String getPwdByUsername(String credenceName) {
         String s = userTMapper.selectPwdByUserName(credenceName);
         return s;
+    }
+
+    @Override
+    public AllVo getUserInfo() {
+        String userName = AliveUser.getThread();
+        if (userName != null && userName.trim().length() > 0) {
+            MtimeUserT mtimeUserT = new MtimeUserT();
+            mtimeUserT.setUserName(userName);
+            MtimeUserT aftermtimeUserT = userTMapper.selectOne(mtimeUserT);
+            if (aftermtimeUserT != null) {
+                return new AllVo(0, "", aftermtimeUserT);
+            } else {
+                return new AllVo(999, "系统出现异常，请联系管理员", null);
+            }
+        } else {
+            return new AllVo(1, "查询失败，用户尚未登陆", null);
+        }
+    }
+
+    @Override
+    public AllVo updateUserInfo(UserUpdate userUpdate) {
+        String userName = AliveUser.getThread();
+        if (userName != null && userName.trim().length() > 0) {
+            //要修改的username与当前threadlocal里的username是否一致，来判断是否登录
+            if (userName.equals(userUpdate.getUsername())) {
+                MtimeUserT mtimeUserT = new MtimeUserT();
+                mtimeUserT.setUserName(userUpdate.getUsername());
+                mtimeUserT.setUuid(userUpdate.getUuid());
+                mtimeUserT.setNickName(userUpdate.getNickname());
+                mtimeUserT.setLifeState(Integer.parseInt(userUpdate.getLifeState()));
+                mtimeUserT.setBirthday(userUpdate.getBirthday());
+                mtimeUserT.setBiography(userUpdate.getBiography());
+                mtimeUserT.setHeadUrl(userUpdate.getHeadAddress());
+                mtimeUserT.setEmail(userUpdate.getEmail());
+                mtimeUserT.setAddress(userUpdate.getAddress());
+                mtimeUserT.setUserPhone(userUpdate.getPhone());
+                mtimeUserT.setUserSex(userUpdate.getSex());
+                mtimeUserT.setBeginTime(null);
+                mtimeUserT.setUpdateTime(null);
+                Integer integer = userTMapper.updateById(mtimeUserT);
+                if (integer > 0) {
+                    return new AllVo(0, "", mtimeUserT);
+                } else {
+                    return new AllVo(1, "用户信息修改失败", null);
+                }
+            }
+        }
+        return new AllVo(1, "查询失败，用户尚未登陆", null);
     }
 }
