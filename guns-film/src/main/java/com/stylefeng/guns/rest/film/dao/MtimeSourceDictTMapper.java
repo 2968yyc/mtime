@@ -16,10 +16,5 @@ import java.util.List;
  */
 public interface MtimeSourceDictTMapper extends BaseMapper<MtimeSourceDictT> {
 
-    /**
-     * queryAllSource
-     *
-     * @return
-     */
-    List<Source> queryAllSource();
+
 }

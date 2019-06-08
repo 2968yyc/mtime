@@ -16,9 +16,4 @@ import java.util.List;
  */
 public interface MtimeYearDictTMapper extends BaseMapper<MtimeYearDictT> {
 
-    /**
-     * queryAllYear
-     * @return
-     */
-    List<Year> queryAllYear();
 }

@@ -1,6 +1,7 @@
 package com.stylefeng.guns.rest.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.cskaoyan.bean.film.FilmConditionVo;
 import com.cskaoyan.bean.film.FilmGetVo;
 import com.cskaoyan.bean.vo.StatusVo;
 import com.cskaoyan.bean.vo.Vo;
@@ -50,11 +51,11 @@ public class FilmController {
      *   yearInfo
      */
     @RequestMapping(value = "getConditionList",method = RequestMethod.GET)
-    public Vo getConditionList(String catId,String sourceId,String yearId){
+    public Vo getConditionList(FilmConditionVo filmConditionVo){
 
 
 
-        return filmService.getConditionList(catId,sourceId,yearId);
+        return filmService.getConditionList(filmConditionVo);
     }
 
     /**

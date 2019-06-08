@@ -16,52 +16,6 @@ import java.util.List;
  */
 public interface MtimeFilmTMapper extends BaseMapper<MtimeFilmT> {
 
-    /**
-     * hotFilmCount
-     * @param status
-     *
-     * @return
-     */
-    int queryHotFilmCount(int status);
 
-    /**
-     * hotFilm
-     * @param status
-     *
-     * @return
-     */
-    List<HotFilm> queryHotFilm(int status);
 
-    /**
-     * soonFilmCount
-     * @param status
-     *
-     * @return
-     */
-    int querySoonFilmCount(int status);
-    /**
-     * soonFilm
-     * @param status
-     *
-     * @return
-     */
-    List<SoonFilm> querySoonFilm(int status);
-
-    /**
-     * boxRankFilm
-     * @return
-     */
-    List<BoxRankFilm> queryBoxRankFilm();
-
-    /**
-     * expectRankFilm
-     * @return
-     */
-    List<ExpectRankFilm> getExpectRankFilm();
-
-    /**
-     * top100Film
-     * @return
-     */
-    List<TopFilm> getTopFilm();
 }

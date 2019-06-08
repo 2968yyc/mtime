@@ -7,9 +7,6 @@
         <id column="UUID" property="uuid" />
         <result column="show_name" property="showName" />
     </resultMap>
-    <select id="queryAllCat" resultType="com.stylefeng.guns.rest.film.bean.rebuild.Cat">
-        select UUID as catId,show_name as catName from mtime_cat_dict_t
-    </select>
     <select id="queryNameById" resultType="String">
         select show_name
         from mtime_cat_dict_t

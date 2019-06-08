@@ -7,8 +7,6 @@
         <id column="UUID" property="uuid" />
         <result column="show_name" property="showName" />
     </resultMap>
-    <select id="queryAllYear" resultType="com.stylefeng.guns.rest.film.bean.rebuild.Year">
-        select UUID as yearId,show_name as yearName from mtime_year_dict_t
-    </select>
+
 
 </mapper>
