@@ -61,4 +61,8 @@
         from mtime_hall_film_info_t hf LEFT JOIN mtime_field_t f on hf.film_id = f.film_id
         where f.cinema_id = #{cinemaId} and f.hall_id = #{fieldId}
     </select>
+
+    <select id="getSeatsByFieldId" resultType="string">
+      select seat_address as seatAddress from mtime_field_t f,mtime_hall_dict_t hd where f.hall_id = hd.UUID and f.UUID = #{fieldId}
+    </select>
 </mapper>

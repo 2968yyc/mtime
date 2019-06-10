@@ -58,4 +58,9 @@ public class CinemaFieldServiceImpl implements CinemaFieldService {
         return filmInfoVo;
     }
 
+    @Override
+    public String getSeatsByFieldId(int fieldId) {
+        String seatsByFieldId = mtimeFieldTMapper.getSeatsByFieldId(fieldId);
+        return seatsByFieldId;
+    }
 }

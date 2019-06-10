@@ -23,4 +23,6 @@ public interface MtimeFieldTMapper extends BaseMapper<MtimeFieldT> {
     HallInfo selectHallInfoByFieldId(@Param("fieldId") int fieldId);
 
     FilmInfoVo selectFilmInfoByCinemaIdAndFieldId(@Param("cinemaId") int cinemaId, @Param("fieldId") int fieldId);
+
+    String getSeatsByFieldId(@Param("fieldId") int fieldId);
 }

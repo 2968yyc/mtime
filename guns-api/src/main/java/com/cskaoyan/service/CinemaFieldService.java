@@ -19,4 +19,6 @@ public interface CinemaFieldService {
     HallInfo getHallInfo(int fieldId);
 
     FilmInfoVo getFilmInfoByCinemaIdAndFieldId(int cinemaId, int fieldId);
+
+    String getSeatsByFieldId(int fieldId);
 }
