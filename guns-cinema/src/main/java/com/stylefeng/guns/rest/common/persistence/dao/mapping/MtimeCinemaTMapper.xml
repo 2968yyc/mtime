@@ -24,7 +24,7 @@
         <if test="areaId!=null and areaId != '' and areaId != '%99%'">
             and cast(area_id as char) like #{areaId}
         </if>
-        <if test="hallIds!=null and hallIds !='' and hallIds != '%0%'">
+        <if test="hallIds!=null and hallIds !='' and hallIds != '%99%'">
             and hall_ids like #{hallIds}
         </if>
     </select>

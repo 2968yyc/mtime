@@ -23,5 +23,8 @@
     <select id="selectPwdByUserName" resultType="string">
         select user_pwd from mtime_user_t where user_name = #{username}
     </select>
+    <select id="selectUidByUsername" parameterType="string" resultType="int">
+        select UUID from mtime_user_t where user_name = #{username}
+    </select>
 
 </mapper>

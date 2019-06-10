@@ -14,4 +14,5 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
 public interface MtimeUserTMapper extends BaseMapper<MtimeUserT> {
 
     String selectPwdByUserName(String UserName);
+    int selectUidByUsername(String usernname);
 }

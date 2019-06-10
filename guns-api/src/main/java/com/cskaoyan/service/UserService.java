@@ -4,6 +4,7 @@ import com.cskaoyan.bean.AllVo;
 import com.cskaoyan.bean.vo.StatusVo;
 import com.cskaoyan.bean.user.UserRegisterVo;
 import com.cskaoyan.bean.user.UserUpdate;
+import com.cskaoyan.bean.vo.Vo;
 
 /**
  * @Author: yyc
@@ -16,7 +17,9 @@ public interface UserService {
 
     String getPwdByUsername(String credenceName);
 
-    AllVo getUserInfo();
+    Vo getUserInfo();
 
     AllVo updateUserInfo(UserUpdate userUpdate);
+
+    int getUserIdByUsername(String username);
 }

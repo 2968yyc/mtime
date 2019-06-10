@@ -3,9 +3,11 @@ package com.stylefeng.guns.rest.user.service.impl;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.cskaoyan.AliveUser;
 import com.cskaoyan.bean.AllVo;
+import com.cskaoyan.bean.vo.DataVo;
 import com.cskaoyan.bean.vo.StatusVo;
 import com.cskaoyan.bean.user.UserRegisterVo;
 import com.cskaoyan.bean.user.UserUpdate;
+import com.cskaoyan.bean.vo.Vo;
 import com.cskaoyan.service.UserService;
 import com.stylefeng.guns.core.util.MD5Util;
 import com.stylefeng.guns.rest.user.dao.MtimeUserTMapper;
@@ -88,19 +90,19 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public AllVo getUserInfo() {
+    public Vo getUserInfo() {
         String userName = AliveUser.getThread();
-        if (userName != null && userName.trim().length() > 0) {
+        if (userName != null && userName.trim().length() != 0) {
             MtimeUserT mtimeUserT = new MtimeUserT();
             mtimeUserT.setUserName(userName);
             MtimeUserT aftermtimeUserT = userTMapper.selectOne(mtimeUserT);
             if (aftermtimeUserT != null) {
-                return new AllVo(0, "", aftermtimeUserT);
+                return new DataVo(0,  aftermtimeUserT);
             } else {
-                return new AllVo(999, "系统出现异常，请联系管理员", null);
+                return new StatusVo(999, "系统出现异常，请联系管理员");
             }
         } else {
-            return new AllVo(1, "查询失败，用户尚未登陆", null);
+            return new StatusVo(1, "查询失败，用户尚未登陆");
         }
     }
 
@@ -133,5 +135,11 @@ public class UserServiceImpl implements UserService {
             }
         }
         return new AllVo(1, "查询失败，用户尚未登陆", null);
+    }
+
+    @Override
+    public int getUserIdByUsername(String username) {
+        int uid = userTMapper.selectUidByUsername(username);
+        return uid;
     }
 }

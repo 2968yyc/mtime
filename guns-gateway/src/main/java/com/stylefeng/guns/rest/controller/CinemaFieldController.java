@@ -9,6 +9,7 @@ import com.cskaoyan.bean.vo.ImgPreVo;
 import com.cskaoyan.bean.vo.StatusVo;
 import com.cskaoyan.bean.vo.Vo;
 import com.cskaoyan.service.CinemaFieldService;
+import com.cskaoyan.service.OrderService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,6 +26,9 @@ public class CinemaFieldController {
 
     @Reference(check = false)
     CinemaFieldService cinemaFieldService;
+    @Reference(check = false)
+    OrderService orderService;
+
 
     @RequestMapping("cinema/getFields")
     public Vo getFields(int cinemaId){
@@ -47,9 +51,10 @@ public class CinemaFieldController {
     }
 
     @RequestMapping("/cinema/getFieldInfo")
-    public Vo getFieldInfo(int cinemaId, int fieldId){
+    public Vo getFieldInfo(Integer cinemaId, Integer fieldId){
         try {
             HallInfo hallInfo = cinemaFieldService.getHallInfo(fieldId);
+            hallInfo.setSoldSeats(orderService.getSoldSeatsByFieldId(fieldId));
             FilmInfoVo filmInfo = cinemaFieldService.getFilmInfoByCinemaIdAndFieldId(cinemaId, fieldId);
             CinemaInfoVo cinemaInfo = cinemaFieldService.getCinemaInfo(cinemaId);
             HashMap<String, Object> map = new HashMap<>();

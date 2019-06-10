@@ -2,9 +2,11 @@ package com.stylefeng.guns.rest.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.cskaoyan.bean.AllVo;
+import com.cskaoyan.bean.vo.DataVo;
 import com.cskaoyan.bean.vo.StatusVo;
 import com.cskaoyan.bean.user.UserRegisterVo;
 import com.cskaoyan.bean.user.UserUpdate;
+import com.cskaoyan.bean.vo.Vo;
 import com.cskaoyan.service.UserService;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,7 +46,7 @@ public class UserController {
     }
 
     @GetMapping("getUserInfo")
-    public AllVo getUserInfo(){
+    public Vo getUserInfo(){
         return userService.getUserInfo();
     }
 
