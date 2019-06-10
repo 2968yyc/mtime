@@ -1,7 +1,6 @@
 package com.cskaoyan.service;
 
 import com.cskaoyan.bean.order.OrderVo;
-import com.cskaoyan.bean.vo.Vo;
 
 import java.util.List;
 
@@ -21,7 +20,7 @@ public interface OrderService {
     OrderVo addOrder(Integer fieldId, String soldSeats, String seatsName, String username);
 
     //获取当前人的订单信息
-    List<OrderVo> getOrderByUsername(String username);
+    List<OrderVo> getOrderByUsername(String username, Integer nowPage, Integer pageSize);
     //根据fieldId获取已经售出的座位编号
     String getSoldSeatsByFieldId(Integer fieldId);
 

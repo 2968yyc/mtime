@@ -59,8 +59,11 @@ public class OrderController {
             return new StatusVo(999,"系统出现异常，请联系管理员");
         }
         //获取当前人的订单信息
-        List<OrderVo> orderByUsername = orderService.getOrderByUsername(username);
+        List<OrderVo> orderByUsername = orderService.getOrderByUsername(username,nowPage,pageSize);
         if (orderByUsername==null || orderByUsername.size()==0){
+            if (orderByUsername==null){
+                return new StatusVo(700,"您未登录");
+            }
             return new StatusVo(1,"订单列表为空哦！~");
         }
         return new DataVo(0,orderByUsername);

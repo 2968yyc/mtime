@@ -1,5 +1,6 @@
 package com.stylefeng.guns.rest.order.dao;
 
+import com.baomidou.mybatisplus.plugins.Page;
 import com.cskaoyan.bean.order.OrderVo;
 import com.stylefeng.guns.rest.order.bean.MoocOrderT;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
@@ -23,5 +24,5 @@ public interface MoocOrderTMapper extends BaseMapper<MoocOrderT> {
     String  getSoldSeatsByFieldId(@Param("fieldId") Integer fieldId);
 
     OrderVo getOrderDetailByOrderId(String uuid);
-    List<OrderVo> getOrderDetailByUserId(Integer userId);
+    List<OrderVo> getOrderDetailByUserId(Integer userId, Page<OrderVo> page);
 }

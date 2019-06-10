@@ -2,12 +2,12 @@ package com.stylefeng.guns.rest.order.serviceimpl;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.plugins.Page;
 import com.cskaoyan.bean.order.OrderInfo;
 import com.cskaoyan.bean.order.OrderVo;
 
-import com.cskaoyan.bean.vo.Vo;
 import com.cskaoyan.service.CinemaFieldService;
-import com.cskaoyan.service.FilmService;
 import com.cskaoyan.service.OrderService;
 
 import com.cskaoyan.service.UserService;
@@ -22,6 +22,7 @@ import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -126,13 +127,14 @@ public class DefaultOrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<OrderVo> getOrderByUsername(String username) {
+    public List<OrderVo> getOrderByUsername(String username, Integer nowPage, Integer pageSize) {
         if (username==null || username.trim().length()==0){
             log.error("用户订单信息获取失败，用户未传入");
             return null;
         }
         int userId = userService.getUserIdByUsername(username);
-        List<OrderVo> orderDetailByUserId = moocOrderTMapper.getOrderDetailByUserId(userId);
+        Page<OrderVo> page = new Page<>(nowPage,pageSize);
+        List<OrderVo> orderDetailByUserId = moocOrderTMapper.getOrderDetailByUserId(userId,page);
         if (orderDetailByUserId==null || orderDetailByUserId.size()==0){
             orderDetailByUserId = new ArrayList<>();
         }
