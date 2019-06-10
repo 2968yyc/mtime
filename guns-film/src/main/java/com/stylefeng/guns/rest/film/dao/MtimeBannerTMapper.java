@@ -18,4 +18,5 @@ public interface MtimeBannerTMapper extends BaseMapper<MtimeBannerT> {
 
 
     List<Banner> queryAllBanner();
+    List<Banner> selectAllBanner();
 }

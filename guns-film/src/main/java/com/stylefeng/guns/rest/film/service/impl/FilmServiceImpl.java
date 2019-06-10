@@ -31,6 +31,7 @@ public class FilmServiceImpl implements FilmService {
 
     @Autowired
     MtimeBannerTMapper mtimeBannerTMapper;
+
     @Autowired
     MtimeFilmTMapper mtimeFilmTMapper;
     @Autowired
@@ -222,7 +223,8 @@ public class FilmServiceImpl implements FilmService {
         filmDetails.setFilmId(allFilmInfo.getFilmId());
         filmDetails.setFilmName(allFilmInfo.getFilmName());
         filmDetails.setFilmEnName(allFilmInfo.getFilmEnName());
-        filmDetails.setImgAddress(allFilmInfo.getImgAddress());
+        filmDetails.setImgAddress("img/"+allFilmInfo.getImgAddress());
+        //filmDetails.setImgAddress("img/films/23412.jpg");
         filmDetails.setScore(allFilmInfo.getScore());
         filmDetails.setScoreNum(String.valueOf(allFilmInfo.getScoreNum()) + " 万人评分");
         filmDetails.setTotalBox((String.valueOf(allFilmInfo.getTotalBox() * 1.0 / 10000)) + " 亿");
@@ -245,20 +247,13 @@ public class FilmServiceImpl implements FilmService {
         info04.put("biography", allFilmInfo.getBiography());
         //actors下的director
         Map<String, Object> director = new HashMap<>();
-        Actor dire_actor = null;
+        int idddd=allFilmInfo.getDirectorId();
+        MtimeActorT dire_actor =allFilmInfoMapper.getDirectorById(idddd) ;
+        director.put("directorName", dire_actor.getActorName());
+        director.put("imgAddress0", dire_actor.getActorImg());
 
         //所有的actor
-        List<Actor> allActors = allFilmInfoMapper.getActorsById(Integer.valueOf(allFilmInfo.getFilmId()));
-        for (Actor m : allActors) {
-            if (m.getUuid() == allFilmInfo.getDirectorId()) {
-                dire_actor = m;
-            }
-            //allActors.remove(m);
-        }
-        allActors.remove(dire_actor);
-        director.put("directorName", dire_actor.getActorName());
-        director.put("imgAddress", dire_actor.getActorImg());
-
+        List<Actor> allActors = allFilmInfoMapper.getActorsById(Integer.valueOf(allFilmInfo.getFilmId()),allFilmInfo.getDirectorId());
         Map<String, Object> actors = new HashMap<>();
         actors.put("director ", director);
         actors.put("actors", allActors);
