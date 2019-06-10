@@ -5,6 +5,10 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.cskaoyan.bean.film.FilmConditionVo;
 import com.cskaoyan.bean.film.FilmGetVo;
+import com.cskaoyan.bean.filmNew.ActorVO;
+import com.cskaoyan.bean.filmNew.FilmDescVO;
+import com.cskaoyan.bean.filmNew.FilmDetailVO;
+import com.cskaoyan.bean.filmNew.ImgVO;
 import com.cskaoyan.bean.vo.DataVo;
 import com.cskaoyan.bean.vo.StatusVo;
 import com.cskaoyan.bean.vo.Vo;
@@ -42,7 +46,10 @@ public class FilmServiceImpl implements FilmService {
     MtimeSourceDictTMapper mtimeSourceDictTMapper;
     @Autowired
     AllFilmInfoMapper allFilmInfoMapper;
-
+    @Autowired
+    MtimeFilmInfoTMapper mtimeFilmInfoTMapper;
+    @Autowired
+    MtimeActorTMapper mtimeActorTMapper;
 
     /**
      * 首页
@@ -126,6 +133,65 @@ public class FilmServiceImpl implements FilmService {
 
         return dataVo;
 
+    }
+    @Override
+    public FilmDetailVO getFilmDetail(String searchParam, int searchType) {
+        //判断searchType 1按名称 0按id
+        FilmDetailVO filmDetailVO=null;
+        if (searchType==1){
+            filmDetailVO = mtimeFilmTMapper.getFilmDetailByName(searchParam);
+        }else{
+            filmDetailVO = mtimeFilmTMapper.getFilmDetailById(searchParam);
+        }
+
+        return filmDetailVO;
+    }
+
+    private MtimeFilmInfoT getFilmInfo(String filmId){
+        MtimeFilmInfoT mtimeFilmInfoT  = new MtimeFilmInfoT();
+        mtimeFilmInfoT.setFilmId(filmId);
+        mtimeFilmInfoT = mtimeFilmInfoTMapper.selectOne(mtimeFilmInfoT);
+        return mtimeFilmInfoT;
+    }
+    @Override
+    public FilmDescVO getFilmDesc(String filmId) {
+        MtimeFilmInfoT mtimeFilmInfoT = getFilmInfo(filmId);
+        FilmDescVO filmDescVO = new FilmDescVO();
+        filmDescVO.setFilmId(filmId);
+        filmDescVO.setBiography(mtimeFilmInfoT.getBiography());
+        return filmDescVO;
+    }
+
+    @Override
+    public ImgVO getImgs(String filmId) {
+        MtimeFilmInfoT mtimeFilmInfoT = getFilmInfo(filmId);
+        String filmImgStr = mtimeFilmInfoT.getFilmImgs();
+        String[] imgAdrr = filmImgStr.split(",");
+
+        ImgVO imgVO = new ImgVO();
+        imgVO.setMainImg(imgAdrr[0]);
+        imgVO.setImg01(imgAdrr[1]);
+        imgVO.setImg02(imgAdrr[2]);
+        imgVO.setImg03(imgAdrr[3]);
+        imgVO.setImg04(imgAdrr[4]);
+        return imgVO;
+    }
+
+    @Override
+    public ActorVO getDirectorDesc(String filmId) {
+        MtimeFilmInfoT mtimeFilmInfoT = getFilmInfo(filmId);
+        Integer directorId = mtimeFilmInfoT.getDirectorId();
+        MtimeActorT mtimeActorT = mtimeActorTMapper.selectById(directorId);
+        ActorVO actorVO = new ActorVO();
+        actorVO.setDirectorName(mtimeActorT.getActorName());
+        actorVO.setImgAddress(mtimeActorT.getActorImg());
+        return actorVO;
+    }
+
+    @Override
+    public List<ActorVO> getActors(String filmId) {
+        List<ActorVO> actors = mtimeActorTMapper.getActors(filmId);
+        return actors;
     }
 
     /**
