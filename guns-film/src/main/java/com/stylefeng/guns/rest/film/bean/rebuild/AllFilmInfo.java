@@ -2,7 +2,7 @@ package com.stylefeng.guns.rest.film.bean.rebuild;
 
 import com.stylefeng.guns.rest.film.bean.MtimeActorT;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 /**

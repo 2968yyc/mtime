@@ -14,5 +14,5 @@ import java.util.List;
 public interface AllFilmInfoMapper {
     AllFilmInfo getFilmDetails(@Param("filmName") String name,@Param("filmId") int id);
     MtimeActorT getDirectorById(int id);
-    List<Actor> getActorsById(int id);
+    List<Actor> getActorsById(@Param("id1") int id1,@Param("id2") int id2);
 }

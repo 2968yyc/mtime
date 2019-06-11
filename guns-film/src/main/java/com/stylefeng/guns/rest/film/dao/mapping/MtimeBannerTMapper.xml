@@ -11,7 +11,11 @@
     </resultMap>
 
     <select id="queryAllBanner" resultType="com.stylefeng.guns.rest.film.bean.rebuild.Banner">
-        select UUID as bannerIdm,banner_address as bannerAdderss,banner_url as  bannerUrl from mtime_banner_t
+        select UUID as bannerId,banner_address as bannerAdderss,banner_url as  bannerUrl from mtime_banner_t
+    </select>
+
+    <select id="selectAllBanner" resultType="com.stylefeng.guns.rest.film.bean.rebuild.Banner">
+        select UUID as bannerId,banner_address as bannerAdderss,banner_url as  bannerUrl from mtime_banner_t
     </select>
 
 </mapper>

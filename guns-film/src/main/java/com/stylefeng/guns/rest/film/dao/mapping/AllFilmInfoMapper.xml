@@ -50,20 +50,29 @@
         </if>
 
     </select>
-    <select id="getDirectorById" resultType="com.stylefeng.guns.rest.film.bean.MtimeActorT">
-        select * from mtime_actor_t where UUID = #{id}
+
+    <resultMap id="actorsMap02" type="com.stylefeng.guns.rest.film.bean.MtimeActorT">
+
+        <result column="UUID" property="uuid" />
+        <result column="actor_name" property="actorName" />
+        <result column="actor_img" property="actorImg" />
+    </resultMap>
+    <select id="getDirectorById" resultMap="actorsMap02">
+        select UUID,actor_name,actor_img
+        from mtime_actor_t
+        where UUID = #{id}
     </select>
 
     <resultMap id="actorsMap" type="com.stylefeng.guns.rest.film.bean.rebuild.Actor">
-        <result column="c4" property="uuid" />
+
         <result column="c1" property="actorName" />
         <result column="c2" property="actorImg" />
         <result column="c3" property="roleName" />
     </resultMap>
     <select id="getActorsById" resultMap="actorsMap">
-        select t1.`actor_name` c1,t1.`actor_img` c2,t2.`role_name` c3,t1.`UUID` c4
+        select t1.`actor_name` c1,t1.`actor_img` c2,t2.`role_name` c3
         from mtime_film_actor_t t2
         left join  mtime_actor_t t1  on t1.`UUID` = t2.`actor_id`
-        where t2.`film_id` = #{id}
+        where t2.`film_id` = #{id1} and t2.`actor_id` != #{id2}
     </select>
 </mapper>

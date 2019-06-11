@@ -7,18 +7,18 @@ import java.io.Serializable;
  * @Date: 2019/6/7 9:39
  */
 public class Actor implements Serializable {
-    private int uuid;
+    //private int uuid;
     private String actorName;
     private String actorImg;
     private String roleName;
 
-    public int getUuid() {
+    /*public int getUuid() {
         return uuid;
     }
 
     public void setUuid(int uuid) {
         this.uuid = uuid;
-    }
+    }*/
 
     public String getActorName() {
         return actorName;

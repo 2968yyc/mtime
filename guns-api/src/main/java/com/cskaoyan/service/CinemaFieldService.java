@@ -3,6 +3,7 @@ package com.cskaoyan.service;
 import com.cskaoyan.bean.cinema.CinemaInfoVo;
 import com.cskaoyan.bean.cinema.FilmInfoVo;
 import com.cskaoyan.bean.cinema.HallInfo;
+import com.cskaoyan.bean.order.OrderInfo;
 
 import java.util.List;
 
@@ -20,5 +21,5 @@ public interface CinemaFieldService {
 
     FilmInfoVo getFilmInfoByCinemaIdAndFieldId(int cinemaId, int fieldId);
 
-    String getSeatsByFieldId(int fieldId);
+    OrderInfo getOrderInfoByFieldId(Integer fieldId);
 }

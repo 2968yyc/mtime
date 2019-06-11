@@ -1,22 +1,28 @@
 package com.cskaoyan.service;
 
-import com.cskaoyan.bean.orders.OrderInfoVo;
+import com.cskaoyan.bean.order.OrderVo;
+import com.cskaoyan.bean.vo.Vo;
 
 import java.util.List;
 
 /**
- * @Author:ZCH
- * @Date:2019/6/8 22:43
+ * @Author: yyc
+ * @Date: 2019/6/8 18:21
  */
 public interface OrderService {
 
-    boolean isTrueSeats(int fieldId, String seats);
+    //验证传入的座位信息是否有效
+    boolean isTrueSeats(Integer fieldId, String seats);
 
-    boolean isNoSoldSeats(int fieldId, String seats);
+    //验证传入座位信息是否已经售出
+    boolean isAllSeatsUnsold(Integer fieldId, String seats);
 
-    OrderInfoVo buyTickets(int fieldId, String soldSeats, String seatsName, int userId);
+    //发起订单
+    OrderVo addOrder(Integer fieldId, String soldSeats, String seatsName, String username);
 
-    List<OrderInfoVo> getOrdersByUserId(int userId);
+    //获取当前人的订单信息
+    List<OrderVo> getOrderByUsername(String username);
+    //根据fieldId获取已经售出的座位编号
+    String getSoldSeatsByFieldId(Integer fieldId);
 
-    String getSoldSeatsByFieldId(int fieldId);
 }

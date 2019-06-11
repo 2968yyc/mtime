@@ -17,10 +17,6 @@ import java.util.List;
  */
 public interface MtimeCatDictTMapper extends BaseMapper<MtimeCatDictT> {
 
-    /**
-     * queryAllCat
-     * @return
-     */
-    List<Cat> queryAllCat();
+
     List<String> queryNameById(@Param("ids") List<Integer> ids);
 }

@@ -128,7 +128,7 @@ public class MtimeFilmT extends Model<MtimeFilmT> {
         this.filmScore = filmScore;
     }
 
-    protected Integer getFilmPresalenum() {
+    public Integer getFilmPresalenum() {
         return filmPresalenum;
     }
 
@@ -136,7 +136,7 @@ public class MtimeFilmT extends Model<MtimeFilmT> {
         this.filmPresalenum = filmPresalenum;
     }
 
-    protected Integer getFilmBoxOffice() {
+    public Integer getFilmBoxOffice() {
         return filmBoxOffice;
     }
 
@@ -144,7 +144,7 @@ public class MtimeFilmT extends Model<MtimeFilmT> {
         this.filmBoxOffice = filmBoxOffice;
     }
 
-    protected Integer getFilmSource() {
+    public Integer getFilmSource() {
         return filmSource;
     }
 
@@ -152,7 +152,7 @@ public class MtimeFilmT extends Model<MtimeFilmT> {
         this.filmSource = filmSource;
     }
 
-    protected String getFilmCats() {
+    public String getFilmCats() {
         return filmCats;
     }
 
@@ -160,7 +160,7 @@ public class MtimeFilmT extends Model<MtimeFilmT> {
         this.filmCats = filmCats;
     }
 
-    protected Integer getFilmArea() {
+    public Integer getFilmArea() {
         return filmArea;
     }
 
@@ -168,7 +168,7 @@ public class MtimeFilmT extends Model<MtimeFilmT> {
         this.filmArea = filmArea;
     }
 
-    protected Integer getFilmDate() {
+    public Integer getFilmDate() {
         return filmDate;
     }
 
@@ -176,7 +176,7 @@ public class MtimeFilmT extends Model<MtimeFilmT> {
         this.filmDate = filmDate;
     }
 
-    protected Date getFilmTime() {
+    public Date getFilmTime() {
         return filmTime;
     }
 
@@ -184,7 +184,7 @@ public class MtimeFilmT extends Model<MtimeFilmT> {
         this.filmTime = filmTime;
     }
 
-    protected Integer getFilmStatus() {
+    public Integer getFilmStatus() {
         return filmStatus;
     }
 

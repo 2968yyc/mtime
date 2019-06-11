@@ -1,13 +1,16 @@
 package com.stylefeng.guns.rest.modular.field.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.cskaoyan.bean.cinema.CinemaInfoVo;
 import com.cskaoyan.bean.cinema.FilmInfoVo;
 import com.cskaoyan.bean.cinema.HallInfo;
+import com.cskaoyan.bean.order.OrderInfo;
 import com.cskaoyan.service.CinemaFieldService;
 import com.stylefeng.guns.rest.common.persistence.dao.MtimeCinemaTMapper;
 import com.stylefeng.guns.rest.common.persistence.dao.MtimeFieldTMapper;
 import com.stylefeng.guns.rest.common.persistence.model.MtimeCinemaT;
+import com.stylefeng.guns.rest.common.persistence.model.MtimeFieldT;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -59,8 +62,15 @@ public class CinemaFieldServiceImpl implements CinemaFieldService {
     }
 
     @Override
-    public String getSeatsByFieldId(int fieldId) {
-        String seatsByFieldId = mtimeFieldTMapper.getSeatsByFieldId(fieldId);
-        return seatsByFieldId;
+    public OrderInfo getOrderInfoByFieldId(Integer fieldId) {
+        MtimeFieldT fieldT = new MtimeFieldT();
+        fieldT.setUuid(fieldId);
+        MtimeFieldT mtimeFieldT = mtimeFieldTMapper.selectOne(fieldT);
+        OrderInfo orderInfo = new OrderInfo();
+        orderInfo.setPrice(mtimeFieldT.getPrice());
+        orderInfo.setFilmId(mtimeFieldT.getFilmId());
+        orderInfo.setCinemaId(mtimeFieldT.getCinemaId());
+        return orderInfo;
     }
+
 }

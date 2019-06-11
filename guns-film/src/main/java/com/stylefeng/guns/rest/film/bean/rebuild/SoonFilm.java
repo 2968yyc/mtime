@@ -9,11 +9,11 @@ import java.util.Date;
  * @Date: 2019/6/5 16:27
  */
 public class SoonFilm extends MtimeFilmT {
-    private int filmId;
-    private int expectNum;
+    private Integer filmId;
+    private Integer expectNum;
     private Date showTime;
 
-    public SoonFilm(int filmId, int filmType, String imgAddress, String filmName, int expectNum, Date showTime) {
+    public SoonFilm(Integer filmId, Integer filmType, String imgAddress, String filmName, Integer expectNum, Date showTime) {
         this.setFilmId(filmId);
         this.setFilmType(filmType);
         this.setImgAddress(imgAddress);
@@ -25,7 +25,7 @@ public class SoonFilm extends MtimeFilmT {
     public SoonFilm() {
     }
 
-    public int getFilmId() {
+    public Integer getFilmId() {
         return filmId;
     }
 
@@ -33,7 +33,7 @@ public class SoonFilm extends MtimeFilmT {
         this.filmId = filmId;
     }
 
-    public int getExpectNum() {
+    public Integer getExpectNum() {
         return expectNum;
     }
 
