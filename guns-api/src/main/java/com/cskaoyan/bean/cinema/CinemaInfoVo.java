@@ -11,7 +11,7 @@ public class CinemaInfoVo implements Serializable {
     private String cinemaId;
     private String imgUrl;
     private String cinemaName;
-    private String cinemaAdress;
+    private String cinemaAddress;
     private String cinemaPhone;
 
     public CinemaInfoVo() {
@@ -21,7 +21,7 @@ public class CinemaInfoVo implements Serializable {
         this.cinemaId = cinemaId;
         this.imgUrl = imgUrl;
         this.cinemaName = cinemaName;
-        this.cinemaAdress = cinemaAdress;
+        this.cinemaAddress = cinemaAdress;
         this.cinemaPhone = cinemaPhone;
     }
 
@@ -50,11 +50,11 @@ public class CinemaInfoVo implements Serializable {
     }
 
     public String getCinemaAdress() {
-        return cinemaAdress;
+        return cinemaAddress;
     }
 
     public void setCinemaAdress(String cinemaAdress) {
-        this.cinemaAdress = cinemaAdress;
+        this.cinemaAddress = cinemaAdress;
     }
 
     public String getCinemaPhone() {
@@ -71,7 +71,7 @@ public class CinemaInfoVo implements Serializable {
                 "cinemaId='" + cinemaId + '\'' +
                 ", imgUrl='" + imgUrl + '\'' +
                 ", cinemaName='" + cinemaName + '\'' +
-                ", cinemaAdress='" + cinemaAdress + '\'' +
+                ", cinemaAdress='" + cinemaAddress + '\'' +
                 ", cinemaPhone='" + cinemaPhone + '\'' +
                 '}';
     }

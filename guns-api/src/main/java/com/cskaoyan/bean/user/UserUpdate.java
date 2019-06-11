@@ -16,7 +16,7 @@ public class UserUpdate implements Serializable{
     private String address;
     private String headAddress;
     private long beginTime;
-    private long updateTime;
+    private String updateTime;
 
 
     public Integer getUuid() {
@@ -115,11 +115,11 @@ public class UserUpdate implements Serializable{
         this.beginTime = beginTime;
     }
 
-    public long getUpdateTime() {
+    public String getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(long updateTime) {
+    public void setUpdateTime(String updateTime) {
         this.updateTime = updateTime;
     }
 }

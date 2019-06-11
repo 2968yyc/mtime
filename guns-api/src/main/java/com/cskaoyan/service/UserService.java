@@ -17,7 +17,8 @@ public interface UserService {
 
     String getPwdByUsername(String credenceName);
 
-    Vo getUserInfo();
+
+    Vo getUserInfo(String userName);
 
     AllVo updateUserInfo(UserUpdate userUpdate);
 

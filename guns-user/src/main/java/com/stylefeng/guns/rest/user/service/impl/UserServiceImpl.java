@@ -90,8 +90,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Vo getUserInfo() {
-        String userName = AliveUser.getThread();
+    public Vo getUserInfo(String userName) {
+
         if (userName != null && userName.trim().length() != 0) {
             MtimeUserT mtimeUserT = new MtimeUserT();
             mtimeUserT.setUserName(userName);
@@ -108,7 +108,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public AllVo updateUserInfo(UserUpdate userUpdate) {
-        String userName = AliveUser.getThread();
+        String userName = userUpdate.getUsername();
         if (userName != null && userName.trim().length() > 0) {
             //要修改的username与当前threadlocal里的username是否一致，来判断是否登录
             if (userName.equals(userUpdate.getUsername())) {
@@ -119,13 +119,13 @@ public class UserServiceImpl implements UserService {
                 mtimeUserT.setLifeState(Integer.parseInt(userUpdate.getLifeState()));
                 mtimeUserT.setBirthday(userUpdate.getBirthday());
                 mtimeUserT.setBiography(userUpdate.getBiography());
-                mtimeUserT.setHeadUrl(userUpdate.getHeadAddress());
+                mtimeUserT.setHeadUrl(userUpdate.getAddress());
                 mtimeUserT.setEmail(userUpdate.getEmail());
                 mtimeUserT.setAddress(userUpdate.getAddress());
-                mtimeUserT.setUserPhone(userUpdate.getPhone());
+
                 mtimeUserT.setUserSex(userUpdate.getSex());
                 mtimeUserT.setBeginTime(null);
-                mtimeUserT.setUpdateTime(null);
+                mtimeUserT.setUpdateTime(new Date());
                 Integer integer = userTMapper.updateById(mtimeUserT);
                 if (integer > 0) {
                     return new AllVo(0, "", mtimeUserT);

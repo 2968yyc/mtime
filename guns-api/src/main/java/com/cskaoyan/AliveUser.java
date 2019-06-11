@@ -12,4 +12,7 @@ public class AliveUser {
     public static String getThread(){
         return thread.get();
     }
+    public static void cleanThread(){
+        thread.remove();
+    }
 }

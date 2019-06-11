@@ -1,5 +1,6 @@
 package com.stylefeng.guns.rest.modular.auth.controller;
 
+import com.cskaoyan.AliveUser;
 import com.cskaoyan.bean.vo.DataVo;
 import com.cskaoyan.bean.vo.StatusVo;
 import com.cskaoyan.bean.vo.Vo;
@@ -42,6 +43,7 @@ public class AuthController {
         if (validate) {
             final String randomKey = jwtTokenUtil.getRandomKey();
             final String token = jwtTokenUtil.generateToken(authRequest.getUserName(), randomKey);
+            AliveUser.setThread(authRequest.getUserName());
 
             return new DataVo(0, new AuthResponse(token, randomKey));
         } else {
