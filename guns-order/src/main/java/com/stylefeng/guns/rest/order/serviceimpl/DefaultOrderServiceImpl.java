@@ -7,6 +7,8 @@ import com.baomidou.mybatisplus.plugins.Page;
 import com.cskaoyan.bean.order.OrderInfo;
 import com.cskaoyan.bean.order.OrderVo;
 
+import com.cskaoyan.bean.vo.StatusVo;
+import com.cskaoyan.bean.vo.Vo;
 import com.cskaoyan.service.CinemaFieldService;
 import com.cskaoyan.service.OrderService;
 
@@ -154,4 +156,10 @@ public class DefaultOrderServiceImpl implements OrderService {
         }
         return null;
     }
+
+    @Override
+    public Vo getPayInfo(String orderId) {
+        return new StatusVo(999,"无法购买");
+    }
+
 }

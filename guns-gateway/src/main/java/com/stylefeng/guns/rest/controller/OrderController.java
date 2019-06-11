@@ -69,4 +69,9 @@ public class OrderController {
         return new DataVo(0,orderByUsername);
 
     }
+
+    @RequestMapping(value = "getPayInfo",method = RequestMethod.POST)
+    public Vo getPayInfo(@RequestParam("orderId")String orderId){
+        return orderService.getPayInfo(orderId);
+    }
 }
