@@ -52,6 +52,9 @@ public class CinemaFieldController {
 
     @RequestMapping("/cinema/getFieldInfo")
     public Vo getFieldInfo(Integer cinemaId, Integer fieldId){
+        if (cinemaId == null || fieldId == null){
+            return new StatusVo(999,"系统出现异常，请联系管理员");
+        }
         try {
             HallInfo hallInfo = cinemaFieldService.getHallInfo(fieldId);
             hallInfo.setSoldSeats(orderService.getSoldSeatsByFieldId(fieldId));

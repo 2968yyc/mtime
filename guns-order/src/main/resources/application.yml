@@ -10,8 +10,8 @@ jwt:
   md5-key: randomKey      #md5加密混淆key
 
 ftp:
-  host-name: 192.168.5.71
-  port: 2100
+  host-name: 127.0.0.1
+  port: 2101
   user-name: ftp
   password: ftp
 #端口号8080 dubbo端口20880 累加...
